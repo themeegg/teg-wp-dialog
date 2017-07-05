@@ -1,0 +1,116 @@
+# Copyright (C) 2017 ThemeEgg
+# This file is distributed under the same license as the TEG WP Dialog package.
+msgid ""
+msgstr ""
+"Project-Id-Version: TEG WP Dialog 1.0.0\n"
+"Report-Msgid-Bugs-To: themeeggofficial@gmail.com\n"
+"POT-Creation-Date: 2017-07-05 01:54:38+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"X-Generator: grunt-wp-i18n1.0.0\n"
+
+#: includes/admin/class-twd-admin-notices.php:113
+msgid "Action failed. Please refresh the page and retry."
+msgstr ""
+
+#: includes/admin/class-twd-admin-notices.php:117 teg-wp-dialog.php:67
+#: teg-wp-dialog.php:76
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: includes/admin/views/html-notice-custom.php:13
+#: includes/admin/views/html-notice-updated.php:13
+msgid "Dismiss"
+msgstr ""
+
+#: includes/admin/views/html-notice-update.php:12
+#: includes/admin/views/html-notice-updating.php:12
+msgid "TEG WP Dialog Data Update"
+msgstr ""
+
+#: includes/admin/views/html-notice-update.php:13
+msgid "We need to update your site's database to the latest version."
+msgstr ""
+
+#: includes/admin/views/html-notice-update.php:16
+msgid "Run the updater"
+msgstr ""
+
+#: includes/admin/views/html-notice-update.php:20
+msgid ""
+"It is strongly recommended that you backup your database before proceeding. "
+"Are you sure you wish to run the updater now?"
+msgstr ""
+
+#: includes/admin/views/html-notice-updated.php:15
+msgid ""
+"TEG WP Dialog data update complete. Thank you for updating to the latest "
+"version!"
+msgstr ""
+
+#: includes/admin/views/html-notice-updating.php:13
+msgid "Your database is being updated in the background."
+msgstr ""
+
+#: includes/admin/views/html-notice-updating.php:14
+msgid "Taking a while? Click here to run it now."
+msgstr ""
+
+#: includes/class-twd-install.php:243
+msgid "View TEG WP Dialog Settings"
+msgstr ""
+
+#: includes/class-twd-install.php:243
+msgid "Settings"
+msgstr ""
+
+#: includes/class-twd-install.php:260
+msgid "View TEG WP Dialog Documentation"
+msgstr ""
+
+#: includes/class-twd-install.php:260
+msgid "Docs"
+msgstr ""
+
+#: includes/class-twd-install.php:261
+msgid "Visit Free Customer Support Forum"
+msgstr ""
+
+#: includes/class-twd-install.php:261
+msgid "Free Support"
+msgstr ""
+
+#: includes/class-twd-shortcodes.php:133
+msgid "Post not available"
+msgstr ""
+
+#: includes/libraries/wp-background-process.php:441
+msgid "Every %d minutes"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "TEG WP Dialog"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://themeegg.com.np/plugins/teg-wp-dialog"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Show dialog on home page or any other page and on posts with this "
+"shortcode. Example: [teg_wp_dialog post_id=\"1\"] or [teg_wp_dialog "
+"page_id=\"4\"]"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "ThemeEgg"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://themeegg.com"
+msgstr ""
