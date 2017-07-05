@@ -4,7 +4,7 @@
  *
  * Load Admin Assets.
  *
- * @class    TEG_WD_Admin_Assets
+ * @class    TWD_Admin_Assets
  * @version  1.0.0
  * @package  TEG_WP_Dialog/Admin
  * @category Admin
@@ -16,9 +16,9 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * TEG_WD_Admin_Assets Class
+ * TWD_Admin_Assets Class
  */
-class TEG_WD_Admin_Assets
+class TWD_Admin_Assets
 {
 
     /**
@@ -66,9 +66,9 @@ class TEG_WD_Admin_Assets
         $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 
         // Register Scripts
-        wp_register_script('teg-wp-dialog-admin', FD()->plugin_url() . '/assets/js/admin/admin' . $suffix . '.js', array(
+        wp_register_script('teg-wp-dialog-admin', TWD()->plugin_url() . '/assets/js/admin/admin' . $suffix . '.js', array(
             'jquery'
-        ), TEG_WD_VERSION);
+        ), TWD_VERSION);
 
 
 
@@ -83,4 +83,4 @@ class TEG_WD_Admin_Assets
     }
 }
 
-new TEG_WD_Admin_Assets();
+new TWD_Admin_Assets();

@@ -1,10 +1,10 @@
 <?php
 /**
- * TEG_WP_Dialog TEG_WD_Ajax
+ * TEG_WP_Dialog TWD_Ajax
  *
  * AJAX Event Handler
  *
- * @class    TEG_WD_Ajax
+ * @class    TWD_Ajax
  * @version  1.0.0
  * @package  TEG_WP_Dialog/Classes
  * @category Class
@@ -16,9 +16,9 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * TEG_WD_Ajax Class
+ * TWD_Ajax Class
  */
-class TEG_WD_Ajax
+class TWD_Ajax
 {
 
     /**
@@ -76,4 +76,4 @@ class TEG_WD_Ajax
 
 }
 
-TEG_WD_Ajax::init();
+TWD_Ajax::init();

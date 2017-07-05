@@ -96,11 +96,11 @@ if (!class_exists('TEG_WP_Dialog')) :
         private function init_hooks()
         {
 
-            register_activation_hook(__FILE__, array('TEG_WD_Install', 'install'));
+            register_activation_hook(__FILE__, array('TWD_Install', 'install'));
 
             add_action('init', array($this, 'load_plugin_textdomain'));
 
-            add_action('init', array('TEG_WD_Shortcodes', 'init'));
+            add_action('init', array('TWD_Shortcodes', 'init'));
 
 
         }
@@ -110,12 +110,12 @@ if (!class_exists('TEG_WP_Dialog')) :
          */
         private function define_constants()
         {
-            $this->define('TEG_WD_DS', DIRECTORY_SEPARATOR);
-            $this->define('TEG_WD_PLUGIN_FILE', __FILE__);
-            $this->define('TEG_WD_ABSPATH', dirname(__FILE__) . TEG_WD_DS);
-            $this->define('TEG_WD_PLUGIN_BASENAME', plugin_basename(__FILE__));
-            $this->define('TEG_WD_VERSION', $this->version);
-            $this->define('TEG_WD_FORM_PATH', TEG_WD_ABSPATH . 'includes' . TEG_WD_DS . 'form' . TEG_WD_DS);
+            $this->define('TWD_DS', DIRECTORY_SEPARATOR);
+            $this->define('TWD_PLUGIN_FILE', __FILE__);
+            $this->define('TWD_ABSPATH', dirname(__FILE__) . TWD_DS);
+            $this->define('TWD_PLUGIN_BASENAME', plugin_basename(__FILE__));
+            $this->define('TWD_VERSION', $this->version);
+            $this->define('TWD_FORM_PATH', TWD_ABSPATH . 'includes' . TWD_DS . 'form' . TWD_DS);
         }
 
 
@@ -157,19 +157,19 @@ if (!class_exists('TEG_WP_Dialog')) :
             /**
              * Class autoloader.
              */
-            include_once(TEG_WD_ABSPATH . 'includes/class-teg-wd-autoloader.php');
+            include_once(TWD_ABSPATH . 'includes/class-twd-autoloader.php');
 
             /**
              * Core classes.
              */
 
-            include_once(TEG_WD_ABSPATH . 'includes/class-teg-wd-install.php');
+            include_once(TWD_ABSPATH . 'includes/class-twd-install.php');
 
-            include_once(TEG_WD_ABSPATH . 'includes/class-teg-wd-ajax.php');
+            include_once(TWD_ABSPATH . 'includes/class-twd-ajax.php');
 
             if ($this->is_request('admin')) {
 
-                include_once(TEG_WD_ABSPATH . 'includes/admin/class-teg-wd-admin.php');
+                include_once(TWD_ABSPATH . 'includes/admin/class-twd-admin.php');
             }
 
             if ($this->is_request('frontend')) {
@@ -187,9 +187,9 @@ if (!class_exists('TEG_WP_Dialog')) :
          */
         public function frontend_includes()
         {
-            include_once(TEG_WD_ABSPATH . 'includes/frontend/class-teg-wd-frontend.php');
+            include_once(TWD_ABSPATH . 'includes/frontend/class-twd-frontend.php');
 
-            include_once(TEG_WD_ABSPATH . 'includes/class-teg-wd-shortcodes.php');         // Shortcodes Class
+            include_once(TWD_ABSPATH . 'includes/class-twd-shortcodes.php');         // Shortcodes Class
 
         }
 
@@ -246,12 +246,12 @@ endif;
  * Returns the main instance of FT to prevent the need to use globals.
  *
  * @since  1.0.0
- * @return TEG_WP_Dialog
+ * @return object
  */
-function FD()
+function TWD()
 {
     return TEG_WP_Dialog::instance();
 }
 
 // Global for backwards compatibility.
-$GLOBALS['teg-wp-dialog'] = FD();
+$GLOBALS['teg-wp-dialog'] = TWD();

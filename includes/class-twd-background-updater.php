@@ -5,7 +5,7 @@
  * Uses https://github.com/A5hleyRich/wp-background-processing to handle DB
  * updates in the background.
  *
- * @class    TEG_WD_Background_Updater
+ * @class    TWD_Background_Updater
  * @version  1.0.0
  * @package  TEG_WP_Dialog/Classes
  * @category Admin
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-if (!class_exists('WP_Async_Request', false)) {
+    if (!class_exists('WP_Async_Request', false)) {
 
     include_once(dirname(__FILE__) . '/libraries/wp-async-request.php');
 }
@@ -26,9 +26,9 @@ if (!class_exists('WP_Background_Process', false)) {
 }
 
 /**
- * TEG_WD_Background_Updater Class.
+ * TWD_Background_Updater Class.
  */
-class TEG_WD_Background_Updater extends WP_Background_Process
+class TWD_Background_Updater extends WP_Background_Process
 {
 
     /**
@@ -98,11 +98,11 @@ class TEG_WD_Background_Updater extends WP_Background_Process
      */
     protected function task($callback)
     {
-        if (!defined('TEG_WD_UPDATING')) {
-            define('TEG_WD_UPDATING', true);
+        if (!defined('TWD_UPDATING')) {
+            define('TWD_UPDATING', true);
         }
 
-        include_once('functions-teg-wd-update.php');
+        include_once('functions-twd-update.php');
 
         if (is_callable($callback)) {
             call_user_func($callback);
@@ -119,7 +119,7 @@ class TEG_WD_Background_Updater extends WP_Background_Process
      */
     protected function complete()
     {
-        TEG_WD_Install::update_db_version();
+        TWD_Install::update_db_version();
         parent::complete();
     }
 }

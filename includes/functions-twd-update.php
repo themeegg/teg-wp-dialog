@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-function fd_update_100_db_version()
+function twd_update_100_db_version()
 {
-    TEG_WD_Install::update_db_version('1.0.0');
+    TWD_Install::update_db_version('1.0.0');
 }

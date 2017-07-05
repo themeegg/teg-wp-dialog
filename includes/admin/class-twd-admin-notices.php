@@ -2,7 +2,7 @@
 /**
  * Display notices in admin.
  *
- * @class    TEG_WD_Admin_Notices
+ * @class    TWD_Admin_Notices
  * @version  1.0.0
  * @package  TEG_WP_Dialog/Admin
  * @category Admin
@@ -14,9 +14,9 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * TEG_WD_Admin_Notices Class.
+ * TWD_Admin_Notices Class.
  */
-class TEG_WD_Admin_Notices
+class TWD_Admin_Notices
 {
 
     /**
@@ -131,7 +131,7 @@ class TEG_WD_Admin_Notices
         $notices = self::get_notices();
 
         if ($notices) {
-            wp_enqueue_style('teg-wp-dialog-activation', FD()->plugin_url() . '/assets/css/activation.css', array(), TEG_WD_VERSION);
+            wp_enqueue_style('teg-wp-dialog-activation', TWD()->plugin_url() . '/assets/css/activation.css', array(), TWD_VERSION);
             foreach ($notices as $notice) {
                 if (!empty(self::$core_notices[$notice]) && apply_filters('teg_wp_dialog_show_admin_notice', true, $notice)) {
                     add_action('admin_notices', array(__CLASS__, self::$core_notices[$notice]));
@@ -178,8 +178,8 @@ class TEG_WD_Admin_Notices
      */
     public static function update_notice()
     {
-        if (version_compare(get_option('teg_wp_dialog_db_version'), TEG_WD_VERSION, '<')) {
-            $updater = new TEG_WD_Background_Updater();
+        if (version_compare(get_option('teg_wp_dialog_db_version'), TWD_VERSION, '<')) {
+            $updater = new TWD_Background_Updater();
             if ($updater->is_updating() || !empty($_GET['do_update_teg_wp_dialog'])) {
                 include('views/html-notice-updating.php');
             } else {
@@ -191,4 +191,4 @@ class TEG_WD_Admin_Notices
     }
 }
 
-TEG_WD_Admin_Notices::init();
+TWD_Admin_Notices::init();

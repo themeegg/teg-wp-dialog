@@ -1,6 +1,6 @@
 <?php
 /**
- * Frontend Dialog functions .
+ * TEG WP Dialog functions .
  *
  * General core functions available on both the front-end and admin.
  *

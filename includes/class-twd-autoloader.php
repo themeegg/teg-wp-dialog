@@ -2,7 +2,7 @@
 /**
  * TEG_WP_Dialog Autoloader.
  *
- * @class    TEG_WD_Autoloader
+ * @class    TWD_Autoloader
  * @version  1.0.0
  * @package  TEG_WP_Dialog/Classes
  * @category Class
@@ -14,9 +14,9 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * TEG_WD_Autoloader Class
+ * TWD_Autoloader Class
  */
-class TEG_WD_Autoloader
+class TWD_Autoloader
 {
 
     /**
@@ -37,7 +37,7 @@ class TEG_WD_Autoloader
 
         spl_autoload_register(array($this, 'autoload'));
 
-        $this->include_path = untrailingslashit(plugin_dir_path(TEG_WD_PLUGIN_FILE)) . '/includes/';
+        $this->include_path = untrailingslashit(plugin_dir_path(TWD_PLUGIN_FILE)) . '/includes/';
     }
 
     /**
@@ -65,7 +65,7 @@ class TEG_WD_Autoloader
     }
 
     /**
-     * Auto-load FD classes on demand to reduce memory consumption.
+     * Auto-load TWD classes on demand to reduce memory consumption.
      * @param string $class
      */
     public function autoload($class)
@@ -92,4 +92,4 @@ class TEG_WD_Autoloader
     }
 }
 
-new TEG_WD_Autoloader();
+new TWD_Autoloader();

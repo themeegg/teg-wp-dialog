@@ -103,7 +103,7 @@ module.exports = function( grunt ){
 			},
 			dist: {
 				options: {
-					potFilename: 'user-registration.pot',
+					potFilename: 'teg-wp-dialog.pot',
 					exclude: [
 						'vendor/.*'
 					]
@@ -114,7 +114,7 @@ module.exports = function( grunt ){
 		// Check textdomain errors.
 		checktextdomain: {
 			options: {
-				text_domain: 'user-registration',
+				text_domain: 'teg-wp-dialog',
 				keywords: [
 					'__:1,2d',
 					'_e:1,2d',
@@ -160,7 +160,7 @@ module.exports = function( grunt ){
 		// Compress files and folders.
 		compress: {
 			options: {
-				archive: 'user-registration.zip'
+				archive: 'teg-wp-dialog.zip'
 			},
 			files: {
 				src: [
@@ -178,7 +178,7 @@ module.exports = function( grunt ){
 					'!node_modules/**',
 					'!phpcs.ruleset.xml'
 				],
-				dest: 'user-registration',
+				dest: 'teg-wp-dialog',
 				expand: true
 			}
 		}

@@ -1,10 +1,10 @@
 <?php
 /**
- * TEG_WP_Dialog Admin.
+ * TEG_WP_Dialog Frontend.
  *
- * @class    TEG_WD_Admin
+ * @class    TWD_Admin
  * @version  1.0.0
- * @package  TEG_WP_Dialog/Admin
+ * @package  TEG_WP_Dialog/Frontend
  * @category Admin
  * @author   ThemeEgg
  */
@@ -14,9 +14,9 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * TEG_WD_Admin Class
+ * TWD_Admin Class
  */
-class TEG_WD_Admin
+class TWD_Frontend
 {
 
     /**
@@ -24,6 +24,7 @@ class TEG_WD_Admin
      */
     public function __construct()
     {
+
 
         add_action('init', array($this, 'includes'));
     }
@@ -34,11 +35,10 @@ class TEG_WD_Admin
     public function includes()
     {
 
-        include_once(TEG_WD_ABSPATH . 'includes' . TEG_WD_DS . 'admin' . TEG_WD_DS . 'class-teg-wd-admin-assets.php');
+        include_once(TWD_ABSPATH . 'includes' . TWD_DS . 'frontend' . TWD_DS . 'class-twd-frontend-assets.php');
 
-        include_once(dirname(__FILE__) . '/class-teg-wd-admin-notices.php');
-
+       
     }
 }
 
-return new TEG_WD_Admin();
+return new TWD_Frontend();

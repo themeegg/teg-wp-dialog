@@ -4,7 +4,7 @@
  *
  * Load Frontend Assets.
  *
- * @class    TEG_WD_Frontend_Assets
+ * @class    TWD_Frontend_Assets
  * @version  1.0.0
  * @package  TEG_WP_Dialog/Admin
  * @category Admin
@@ -16,9 +16,9 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * TEG_WD_Frontend_Assets Class
+ * TWD_Frontend_Assets Class
  */
-class TEG_WD_Frontend_Assets
+class TWD_Frontend_Assets
 {
 
     /**
@@ -42,7 +42,7 @@ class TEG_WD_Frontend_Assets
 
         //$jquery_version = isset($wp_scripts->registered['jquery-ui-core']->ver) ? $wp_scripts->registered['jquery-ui-core']->ver : '1.9.2';
 
-        wp_register_style('colorbox-style', FD()->plugin_url() . '/assets/css/colorbox.css', array(), TEG_WD_VERSION);
+        wp_register_style('colorbox-style', TWD()->plugin_url() . '/assets/css/colorbox.css', array(), TWD_VERSION);
 
         wp_enqueue_style('colorbox-style');
 
@@ -59,15 +59,15 @@ class TEG_WD_Frontend_Assets
 
         // Register Scripts
 
-        wp_register_script('colorbox', FD()->plugin_url() . '/assets/js/colorbox/jquery.colorbox' . $suffix . '.js', array(
+        wp_register_script('colorbox', TWD()->plugin_url() . '/assets/js/colorbox/jquery.colorbox' . $suffix . '.js', array(
             'jquery'
-        ), TEG_WD_VERSION);
+        ), TWD_VERSION);
 
 
-        wp_register_script('teg_wp_dialog_frontend', FD()->plugin_url() . '/assets/js/frontend/frontend' . $suffix . '.js', array(
+        wp_register_script('teg_wp_dialog_frontend', TWD()->plugin_url() . '/assets/js/frontend/frontend' . $suffix . '.js', array(
             'jquery',
             'colorbox'
-        ), TEG_WD_VERSION);
+        ), TWD_VERSION);
         wp_enqueue_script('teg_wp_dialog_frontend');
 
         $params = array(
@@ -87,4 +87,4 @@ class TEG_WD_Frontend_Assets
     }
 }
 
-new TEG_WD_Frontend_Assets();
+new TWD_Frontend_Assets();

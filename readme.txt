@@ -25,6 +25,6 @@ We can add dialog on page, post or any widgets load, via shortcode.
 1. You can change post_id to page_id on your argument of shortcode.
 
 == Frequently Asked Questions ==
-Do you have questions or issues with Frontend Dialog Plugin?
+Do you have questions or issues with TEG WP Dialog Plugin?
 1. Soon we'll coming with full documentation.
 

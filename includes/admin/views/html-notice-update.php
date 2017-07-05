@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
 
 ?>
 <div id="message" class="updated teg-wp-dialog-message ur-connect">
-    <p><strong><?php _e('Frontend Dialog Data Update', 'teg-wp-dialog'); ?></strong>
+    <p><strong><?php _e('TEG WP Dialog Data Update', 'teg-wp-dialog'); ?></strong>
         &#8211; <?php _e('We need to update your site\'s database to the latest version.', 'teg-wp-dialog'); ?></p>
     <p class="submit"><a
                 href="<?php echo esc_url(add_query_arg('do_update_teg_wp_dialog', 'true', admin_url('options-general.php?page=teg-wp-dialog'))); ?>"

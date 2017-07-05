@@ -2,7 +2,7 @@
 /**
  * Installation related functions and actions.
  *
- * @class    TEG_WD_Install
+ * @class    TWD_Install
  * @version  1.0.0
  * @package  TEG_WP_Dialog/Classes
  * @category Admin
@@ -14,9 +14,9 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * TEG_WD_Install Class.
+ * TWD_Install Class.
  */
-class TEG_WD_Install
+class TWD_Install
 {
     /** @var array DB updates and callbacks that need to be run per version */
     private static $db_updates = array(
@@ -37,7 +37,7 @@ class TEG_WD_Install
         add_action('init', array(__CLASS__, 'init_background_updater'), 5);
         add_action('admin_init', array(__CLASS__, 'install_actions'));
         add_action('in_plugin_update_message-teg-wp-dialog/teg-wp-dialog.php', array(__CLASS__, 'in_plugin_update_message'));
-        add_filter('plugin_action_links_' . TEG_WD_PLUGIN_BASENAME, array(__CLASS__, 'plugin_action_links'));
+        add_filter('plugin_action_links_' . TWD_PLUGIN_BASENAME, array(__CLASS__, 'plugin_action_links'));
         add_filter('plugin_row_meta', array(__CLASS__, 'plugin_row_meta'), 10, 2);
     }
 
@@ -46,8 +46,8 @@ class TEG_WD_Install
      */
     public static function init_background_updater()
     {
-        include_once('class-teg-wd-background-updater.php');
-        self::$background_updater = new TEG_WD_Background_Updater();
+        include_once('class-twd-background-updater.php');
+        self::$background_updater = new TWD_Background_Updater();
     }
 
     /**
@@ -57,7 +57,7 @@ class TEG_WD_Install
      */
     public static function check_version()
     {
-        if (!defined('IFRAME_REQUEST') && get_option('teg_wp_dialog_version') !== FD()->version) {
+        if (!defined('IFRAME_REQUEST') && get_option('teg_wp_dialog_version') !== TWD()->version) {
             self::install();
             do_action('teg_wp_dialog_updated');
         }
@@ -72,7 +72,7 @@ class TEG_WD_Install
     {
         if (!empty($_GET['do_update_teg_wp_dialog'])) {
             self::update();
-            TEG_WD_Admin_Notices::add_notice('update');
+            TWD_Admin_Notices::add_notice('update');
         }
         if (!empty($_GET['force_update_teg_wp_dialog'])) {
             do_action('wp_ur_updater_cron');
@@ -81,7 +81,7 @@ class TEG_WD_Install
     }
 
     /**
-     * Install FD.
+     * Install TWD.
      */
     public static function install()
     {
@@ -91,19 +91,19 @@ class TEG_WD_Install
             return;
         }
 
-        if (!defined('TEG_WD_INSTALLING')) {
-            define('TEG_WD_INSTALLING', true);
+        if (!defined('TWD_INSTALLING')) {
+            define('TWD_INSTALLING', true);
         }
 
         // Ensure needed classes are loaded
-        include_once(dirname(__FILE__) . '/admin/class-teg-wd-admin-notices.php');
+        include_once(dirname(__FILE__) . '/admin/class-twd-admin-notices.php');
 
      
         // Queue upgrades wizard
         $current_ur_version = get_option('teg_wp_dialog_version', null);
         $current_db_version = get_option('teg_wp_dialog_db_version', null);
 
-        TEG_WD_Admin_Notices::remove_all_notices();
+        TWD_Admin_Notices::remove_all_notices();
 
         // No versions? This is a new install :)
         if (is_null($current_ur_version) && is_null($current_db_version) && apply_filters('teg_wp_dialog_enable_setup_wizard', true)) {
@@ -111,7 +111,7 @@ class TEG_WD_Install
         }
 
         if (!is_null($current_db_version) && version_compare($current_db_version, max(array_keys(self::$db_updates)), '<')) {
-            TEG_WD_Admin_Notices::add_notice('update');
+            TWD_Admin_Notices::add_notice('update');
         } else {
             self::update_db_version();
         }
@@ -140,12 +140,12 @@ class TEG_WD_Install
     }
 
     /**
-     * Update FD version to current.
+     * Update TWD version to current.
      */
     private static function update_ur_version()
     {
         delete_option('teg_wp_dialog_version');
-        add_option('teg_wp_dialog_version', FD()->version);
+        add_option('teg_wp_dialog_version', TWD()->version);
     }
 
     /**
@@ -177,7 +177,7 @@ class TEG_WD_Install
     public static function update_db_version($version = null)
     {
         delete_option('teg_wp_dialog_db_version');
-        add_option('teg_wp_dialog_db_version', is_null($version) ? FD()->version : $version);
+        add_option('teg_wp_dialog_db_version', is_null($version) ? TWD()->version : $version);
     }
 
     /**
@@ -209,7 +209,7 @@ class TEG_WD_Install
     {
         // Output Upgrade Notice.
         $matches = null;
-        $regexp = '~==\s*Upgrade Notice\s*==\s*=\s*(.*)\s*=(.*)(=\s*' . preg_quote(TEG_WD_VERSION) . '\s*=|$)~Uis';
+        $regexp = '~==\s*Upgrade Notice\s*==\s*=\s*(.*)\s*=(.*)(=\s*' . preg_quote(TWD_VERSION) . '\s*=|$)~Uis';
         $upgrade_notice = '';
 
         if (preg_match($regexp, $content, $matches)) {
@@ -217,7 +217,7 @@ class TEG_WD_Install
             $notices = (array)preg_split('~[\r\n]+~', trim($matches[2]));
 
             // Check the latest stable version and ignore trunk.
-            if ($version === $new_version && version_compare(TEG_WD_VERSION, $version, '<')) {
+            if ($version === $new_version && version_compare(TWD_VERSION, $version, '<')) {
 
                 $upgrade_notice .= '<div class="ur_plugin_upgrade_notice">';
 
@@ -240,7 +240,7 @@ class TEG_WD_Install
     public static function plugin_action_links($actions)
     {
         $new_actions = array(
-            'settings' => '<a href="' . admin_url('options-general.php?page=teg-wp-dialog') . '" title="' . esc_attr(__('View Frontend Dialog Settings', 'teg-wp-dialog')) . '">' . __('Settings', 'teg-wp-dialog') . '</a>',
+            'settings' => '<a href="' . admin_url('options-general.php?page=teg-wp-dialog') . '" title="' . esc_attr(__('View TEG WP Dialog Settings', 'teg-wp-dialog')) . '">' . __('Settings', 'teg-wp-dialog') . '</a>',
         );
 
         return $actions;
@@ -255,9 +255,9 @@ class TEG_WD_Install
      */
     public static function plugin_row_meta($plugin_meta, $plugin_file)
     {
-        if ($plugin_file == TEG_WD_PLUGIN_BASENAME) {
+        if ($plugin_file == TWD_PLUGIN_BASENAME) {
             $new_plugin_meta = array(
-                'docs' => '<a href="' . esc_url(apply_filters('teg_wp_dialog_docs_url', 'http://themeegg.com/teg-wp-dialog/')) . '" title="' . esc_attr(__('View Frontend Dialog Documentation', 'teg-wp-dialog')) . '">' . __('Docs', 'teg-wp-dialog') . '</a>',
+                'docs' => '<a href="' . esc_url(apply_filters('teg_wp_dialog_docs_url', 'http://themeegg.com/teg-wp-dialog/')) . '" title="' . esc_attr(__('View TEG WP Dialog Documentation', 'teg-wp-dialog')) . '">' . __('Docs', 'teg-wp-dialog') . '</a>',
                 'support' => '<a href="' . esc_url(apply_filters('teg_wp_dialog_support_url', 'http://themeegg.com/teg-wp-dialog/')) . '" title="' . esc_attr(__('Visit Free Customer Support Forum', 'teg-wp-dialog')) . '">' . __('Free Support', 'teg-wp-dialog') . '</a>',
             );
 
@@ -268,4 +268,4 @@ class TEG_WD_Install
     }
 }
 
-TEG_WD_Install::init();
+TWD_Install::init();

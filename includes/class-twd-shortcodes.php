@@ -1,8 +1,8 @@
 <?php
 /**
- * Frontend Dialog Shortcode.
+ * TEG WP Dialog Shortcode.
  *
- * @class    TEG_WD_Shortcodes
+ * @class    TWD_Shortcodes
  * @version  1.0.0
  * @package  TEG_WP_Dialog/Classes
  * @category Class
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
 /**
  * RP_Shortcodes Class
  */
-class TEG_WD_Shortcodes
+class TWD_Shortcodes
 {
 
     /**
@@ -130,7 +130,7 @@ class TEG_WD_Shortcodes
 
         } else {
 
-            echo "<h2>" . __("Post not available") . "</h2>";
+            echo "<h2>" . __("Post not available", 'teg-wp-dialog') . "</h2>";
         }
         echo "</div> </div>";
         return ob_get_clean();
