@@ -35,7 +35,7 @@ class TWD_Frontend
     public function includes()
     {
 
-        include_once(TWD_ABSPATH . 'includes' . TWD_DS . 'frontend' . TWD_DS . 'class-twd-frontend-assets.php');
+        include_once(TWD_ABSPATH . 'includes' . TWD_DS . 'frontend' . TWD_DS . 'class-twd-frontend-scripts.php');
 
        
     }

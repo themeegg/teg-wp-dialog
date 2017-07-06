@@ -98,11 +98,27 @@ if (!class_exists('TEG_WP_Dialog')) :
 
             register_activation_hook(__FILE__, array('TWD_Install', 'install'));
 
-            add_action('init', array($this, 'load_plugin_textdomain'));
+            add_action('after_setup_theme', array($this, 'include_template_functions'), 11);
+
+
+            add_action('init', array($this, 'init'), 0);
 
             add_action('init', array('TWD_Shortcodes', 'init'));
 
 
+        }
+
+        public function init()
+        {
+            // Before init action.
+            do_action('before_teg_wp_dialog_init');
+
+            // Set up localisation.
+            $this->load_plugin_textdomain();
+
+
+            // Init action.
+            do_action('after_teg_wp_dialog_init');
         }
 
         /**
@@ -147,6 +163,12 @@ if (!class_exists('TEG_WP_Dialog')) :
                 case 'frontend' :
                     return (!is_admin() || defined('DOING_AJAX')) && !defined('DOING_CRON');
             }
+        }
+
+
+        public function include_template_functions()
+        {
+            //include_once( UR_ABSPATH . 'includes/functions-ur-template.php' );
         }
 
         /**
