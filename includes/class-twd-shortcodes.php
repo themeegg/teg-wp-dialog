@@ -1,138 +1,76 @@
 <?php
-/**
- * TEG WP Dialog Shortcode.
- *
- * @class    TWD_Shortcodes
- * @version  1.0.0
- * @package  TEG_WP_Dialog/Classes
- * @category Class
- * @author   ThemeEgg
- */
 
 if (!defined('ABSPATH')) {
-    exit;
+    exit; // Exit if accessed directly
 }
 
 /**
- * RP_Shortcodes Class
+ * TWD_Shortcodes class
+ *
+ * @class       TWD_Shortcodes
+ * @version     1.0.0
+ * @package     TEG_Twitter_Api/Classes
+ * @category    Class
+ * @author      ThemeEgg
  */
 class TWD_Shortcodes
 {
 
     /**
-     * Init Shortcodes.
+     * Init shortcodes.
      */
     public static function init()
     {
-
-
         $shortcodes = array(
 
-            'teg_wp_dialog' => __CLASS__ . '::dialog',
+            'teg_wp_dialog' => __CLASS__ . '::teg_wp_dialog',
+
         );
 
         foreach ($shortcodes as $shortcode => $function) {
-
-            do_action("before_{$shortcode}_shortcode");
-
             add_shortcode(apply_filters("{$shortcode}_shortcode_tag", $shortcode), $function);
-
-            do_action("after_{$shortcode}_shortcode");
         }
-    }
 
+
+    }
 
     /**
-     * Frontend dialog group shortcode.
-     */
-    public static function dialog($atts)
-    {
-        if (empty($atts)) {
-            return '';
-        }
-
-        if (!isset($atts['post_id']) && !isset($atts['page_id'])) {
-            return '';
-        }
-
-        if (isset($atts['post_id'])) {
-            $atts = shortcode_atts(array(
-                'post_id' => '',
-            ), $atts, 'teg_wp_dialog');
-        }
-        if (isset($atts['page_id'])) {
-            $atts = shortcode_atts(array(
-                'page_id' => '',
-            ), $atts, 'teg_wp_dialog');
-        }
-
-        $content = self::get_content($atts);
-
-        return self::teg_wp_dialog_output($content);
-
-
-    }
-
-    /*
+     * Shortcode Wrapper.
      *
+     * @param string[] $function
+     * @param array $atts (default: array())
+     * @param array $wrapper
      *
-     * Get content page or post
+     * @return string
      */
-    public static function get_content($atts)
+    public static function shortcode_wrapper(
+        $function,
+        $atts = array(),
+        $wrapper = array(
+            'class' => 'teg-twitter-api',
+            'before' => null,
+            'after' => null,
+        )
+    )
     {
-
-        if (isset($atts['page_id'])) {
-
-            $id = $atts['page_id'];
-
-            $post_or_page = "page";
-
-        }
-        if (isset($atts['post_id'])) {
-
-            $id = $atts['post_id'];
-
-            $post_or_page = "post";
-
-        }
-
-        $args = array(
-
-
-            'post_type' => $post_or_page,
-
-            'post_status' => 'publish',
-
-            'post__in' => array($id)
-        );
-        $post_data = get_posts($args);
-
-        return $post_data;
-
-    }
-
-
-    /**
-     * Output for Frontend dialog.
-     */
-    private static function teg_wp_dialog_output($content)
-    {
-
-
         ob_start();
 
-        echo "<div style='display:none'>";
-        echo "<a class='fd_inline_colorbox' href='#fd_inline_colorbox_content'>Inline HTML</a><div id='fd_inline_colorbox_content'>";
-        if (isset($content[0])) {
+        echo empty($wrapper['before']) ? '<div class="' . esc_attr($wrapper['class']) . '">' : $wrapper['before'];
+        call_user_func($function, $atts);
+        echo empty($wrapper['after']) ? '</div>' : $wrapper['after'];
 
-            echo "<h2 class='fd-post-title'>" . $content[0]->post_title . "</h2>";
-            echo $content[0]->post_content;
-
-        } else {
-
-            echo "<h2>" . __("Post not available", 'teg-wp-dialog') . "</h2>";
-        }
-        echo "</div> </div>";
         return ob_get_clean();
     }
+
+    /**
+     * wp dialog shortcodes
+     *
+     * @param mixed $atts
+     * @return string
+     */
+    public static function teg_wp_dialog($atts)
+    {
+        return self::shortcode_wrapper(array('TWD_Shortcode_WP_Dialog', 'output'), $atts);
+    }
+
 }

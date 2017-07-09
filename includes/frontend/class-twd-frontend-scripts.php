@@ -2,7 +2,7 @@
 /**
  * TEGWPFrontend fronted scripts
  *
- * @class    TWD_Frontend_Scripts
+ * @class    TWD_Admin_Assets
  * @version  1.0.0
  * @package  TEGWPFrontend/Admin
  * @category Admin
@@ -14,9 +14,9 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * TWD_Frontend_Scripts Class
+ * TWD_Admin_Assets Class
  */
-class TWD_Frontend_Scripts
+class TWD_Admin_Assets
 {
 
     /**
@@ -58,9 +58,9 @@ class TWD_Frontend_Scripts
     public static function get_styles()
     {
         return apply_filters('teg_wp_dialog_enqueue_styles', array(
-            'teg-wp-dialog-remodal' => array(
+            'remodal' => array(
                 'src' => self::get_asset_url('assets/css/remodal.css'),
-                'deps' => '',
+                'deps' => array('remodal-default-theme'),
                 'version' => TWD_VERSION,
                 'media' => '',
                 'has_rtl' => true,
@@ -168,20 +168,21 @@ class TWD_Frontend_Scripts
     private static function register_scripts()
     {
         $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
-        $register_scripts = array(
-            'teg-wp-dialog-remodal' => array(
-                'src' => self::get_asset_url('assets/js/remodal/remodal' . $suffix . '.js'),
-                'deps' => array('jquery'),
-                'version' => TWD_VERSION,
-            ),
-            'teg-wp-dialog-remodal-init' => array(
-                'src' => self::get_asset_url('assets/js/remodal-init' . $suffix . '.js'),
-                'deps' => array('jquery', 'teg-wp-dialog-remodal'),
-                'version' => TWD_VERSION,
-            ),
+        $register_scripts =
+            array(
+                'remodal' => array(
+                    'src' => self::get_asset_url('assets/js/remodal/remodal' . $suffix . '.js'),
+                    'deps' => array('jquery'),
+                    'version' => TWD_VERSION,
+                ),
+                'teg-wp-dialog-frontend-script' => array(
+                    'src' => self::get_asset_url('assets/js/frontend/teg-wp-dialog-frontend' . $suffix . '.js'),
+                    'deps' => array('jquery', 'remodal'),
+                    'version' => TWD_VERSION,
+                ),
 
 
-        );
+            );
         foreach ($register_scripts as $name => $props) {
             self::register_script($name, $props['src'], $props['deps'], $props['version']);
         }
@@ -193,9 +194,15 @@ class TWD_Frontend_Scripts
     private static function register_styles()
     {
         $register_styles = array(
-            'teg-wp-dialog-remodal' => array(
-                'src' => self::get_asset_url('assets/css/remodal.css'),
+            'remodal-default-theme' => array(
+                'src' => self::get_asset_url('assets/css/remodal-default-theme.css'),
                 'deps' => array(),
+                'version' => TWD_VERSION,
+                'has_rtl' => false,
+            ),
+            'remodal' => array(
+                'src' => self::get_asset_url('assets/css/remodal.css'),
+                'deps' => array('remodal-default-theme'),
                 'version' => TWD_VERSION,
                 'has_rtl' => false,
             ),
@@ -222,7 +229,7 @@ class TWD_Frontend_Scripts
 
         $has_shortcode = true;
         if ($has_shortcode) {
-            self::enqueue_script('teg-wp-dialog-remodal-init');
+            self::enqueue_script('teg-wp-dialog-frontend-script');
         }
 
         // CSS Styles
@@ -289,4 +296,4 @@ class TWD_Frontend_Scripts
     }
 }
 
-TWD_Frontend_Scripts::init();
+TWD_Admin_Assets::init();
