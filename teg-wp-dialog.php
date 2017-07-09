@@ -179,7 +179,7 @@ if (!class_exists('TEG_WP_Dialog')) :
 
 
             // core
-            include(TWD_ABSPATH . 'includes' . TWD_DS . 'teg-ta-core-functions.php');
+            include(TWD_ABSPATH . 'includes' . TWD_DS . 'twd-core-functions.php');
 
             /**
              * Class autoloader.
@@ -191,7 +191,7 @@ if (!class_exists('TEG_WP_Dialog')) :
              * Interfaces.
              */
 
-            include_once(TEG_TA_ABSPATH . 'includes/interfaces/class-twd-shortcode-interface.php');
+            include_once(TWD_ABSPATH . 'includes/interfaces/class-twd-shortcode-interface.php');
 
             /**
              * Core classes.
@@ -242,6 +242,15 @@ if (!class_exists('TEG_WP_Dialog')) :
 
             load_textdomain('teg-wp-dialog', WP_LANG_DIR . '/teg-wp-dialog/teg-wp-dialog-' . $locale . '.mo');
             load_plugin_textdomain('teg-wp-dialog', false, plugin_basename(dirname(__FILE__)) . '/languages');
+        }
+
+        /**
+         * Get the template path.
+         * @return string
+         */
+        public function template_path()
+        {
+            return apply_filters('teg_wp_dialog_template_path', 'teg-wp-dialog/');
         }
 
         /**

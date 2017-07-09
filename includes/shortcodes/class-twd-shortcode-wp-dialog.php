@@ -74,7 +74,7 @@ class TWD_Shortcode_WP_Dialog implements TWD_Shortcode_Interface
             'data' => $post_data
         );
 
-        twd_get_template('shortcodes/content-shortcode-twitter-feeds.php', $data);
+        twd_get_template('shortcodes/content-shortcode-wp-dialog.php', $data);
 
 
     }
