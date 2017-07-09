@@ -34,7 +34,9 @@ class TWD_Admin
     public function includes()
     {
 
-        include_once(TWD_ABSPATH . 'includes' . TWD_DS . 'admin' . TWD_DS . 'class-twd-admin-assets.php');
+        include_once(dirname(__FILE__) . '/class-twd-admin-menus.php');
+
+        include_once(dirname(__FILE__) . '/class-twd-admin-assets.php');
 
         include_once(dirname(__FILE__) . '/class-twd-admin-notices.php');
 

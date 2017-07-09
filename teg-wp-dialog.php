@@ -39,6 +39,13 @@ if (!class_exists('TEG_WP_Dialog')) :
         public $version = '1.0.0';
 
         /**
+         * Query instance.
+         *
+         *
+         */
+        public $query = null;
+
+        /**
          * Instance of this class.
          * @var object
          */
@@ -212,6 +219,8 @@ if (!class_exists('TEG_WP_Dialog')) :
                 $this->frontend_includes();
             }
 
+
+            $this->query = new TWD_Query();
 
         }
 
