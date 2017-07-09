@@ -76,11 +76,16 @@ class TWD_Autoloader
 
         $path = '';
 
-        if (strpos($class, 'ur_meta_box') === 0) {
+
+        if (strpos($class, 'twd_shortcode_') === 0) {
+
+            $path = $this->include_path . 'shortcodes/';
+
+        } else if (strpos($class, 'twd_meta_box') === 0) {
 
             $path = $this->include_path . 'admin/meta-boxes/';
 
-        } elseif (strpos($class, 'ur_admin') === 0) {
+        } elseif (strpos($class, 'twd_admin') === 0) {
 
             $path = $this->include_path . 'admin/';
         }
@@ -89,6 +94,7 @@ class TWD_Autoloader
 
             $this->load_file($this->include_path . $file);
         }
+
     }
 }
 

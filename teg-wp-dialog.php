@@ -176,10 +176,22 @@ if (!class_exists('TEG_WP_Dialog')) :
          */
         private function includes()
         {
+
+
+            // core
+            include(TWD_ABSPATH . 'includes' . TWD_DS . 'teg-ta-core-functions.php');
+
             /**
              * Class autoloader.
              */
             include_once(TWD_ABSPATH . 'includes/class-twd-autoloader.php');
+
+
+            /**
+             * Interfaces.
+             */
+
+            include_once(TEG_TA_ABSPATH . 'includes/interfaces/class-twd-shortcode-interface.php');
 
             /**
              * Core classes.
