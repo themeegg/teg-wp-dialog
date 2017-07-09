@@ -93,7 +93,7 @@ function twd_get_template($template_name, $args = array(), $template_path = '', 
     $located = twd_locate_template($template_name, $template_path, $default_path);
 
     if (!file_exists($located)) {
-        _doing_it_wrong(__FUNCTION__, sprintf(__('%s does not exist.', 'teg-twitter-api'), '<code>' . $located . '</code>'), '1.0');
+        _doing_it_wrong(__FUNCTION__, sprintf(__('%s does not exist.', 'teg-wp-dialog'), '<code>' . $located . '</code>'), '1.0');
         return;
     }
 

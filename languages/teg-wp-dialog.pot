@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TEG WP Dialog 1.0.0\n"
 "Report-Msgid-Bugs-To: themeeggofficial@gmail.com\n"
-"POT-Creation-Date: 2017-07-05 01:54:38+00:00\n"
+"POT-Creation-Date: 2017-07-09 08:02:57+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -84,12 +84,24 @@ msgstr ""
 msgid "Free Support"
 msgstr ""
 
-#: includes/class-twd-shortcodes.php:133
+#: includes/libraries/wp-background-process.php:441
+msgid "Every %d minutes"
+msgstr ""
+
+#: includes/shortcodes/class-twd-shortcode-wp-dialog.php:83
 msgid "Post not available"
 msgstr ""
 
-#: includes/libraries/wp-background-process.php:441
-msgid "Every %d minutes"
+#: includes/shortcodes/class-twd-shortcode-wp-dialog.php:87
+msgid "Post not available, please check your shortcode once."
+msgstr ""
+
+#: includes/twd-core-functions.php:96
+msgid "%s does not exist."
+msgstr ""
+
+#: templates/shortcodes/content-shortcode-wp-dialog.php:35
+msgid "Close"
 msgstr ""
 
 #. Plugin Name of the plugin/theme

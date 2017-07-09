@@ -2,7 +2,7 @@
 
     var options = {};
 
-    $('[data-remodal-id=modal]').remodal(options);
+    $('.teg-wp-dialog').remodal(options).open();
 
 
 }(jQuery, document, window));

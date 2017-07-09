@@ -51,11 +51,18 @@ class TWD_Shortcode_WP_Dialog implements TWD_Shortcode_Interface
 
         if (isset($atts['post_id'])) {
 
-            $id = $atts['post_id'];
+            $id = is_numeric($atts['post_id']) ? $atts['page_id'] : 0;
 
             $post_or_page = "post";
 
+        } else if (isset($atts['page_id'])) {
+
+
+            $id = is_numeric($atts['page_id']) ? $atts['page_id'] : 0;
+
+            $post_or_page = "page";
         }
+
 
         $args = array(
 
@@ -66,12 +73,18 @@ class TWD_Shortcode_WP_Dialog implements TWD_Shortcode_Interface
 
             'post__in' => array($id)
         );
-        $post_data = get_posts($args);
+        $post_data_obj = get_posts($args);
 
 
+        $post_data = isset($post_data_obj[0]) ? $post_data_obj[0] : array();
+        
         $data = array(
 
-            'data' => $post_data
+            'post_title' => isset($post_data->post_title) ? $post_data->post_title : __('Post not available', 'teg-wp-dialog'),
+
+            'post_id' => isset($post_data->ID) ? $post_data->ID : 0,
+
+            'post_content' => isset($post_data->post_content) ? $post_data->post_content : __('Post not available, please check your shortcode once.', 'teg-wp-dialog'),
         );
 
         twd_get_template('shortcodes/content-shortcode-wp-dialog.php', $data);

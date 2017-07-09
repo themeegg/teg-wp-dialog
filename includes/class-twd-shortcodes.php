@@ -47,7 +47,7 @@ class TWD_Shortcodes
         $function,
         $atts = array(),
         $wrapper = array(
-            'class' => 'teg-twitter-api',
+            'class' => 'teg-wp-dialog-wrapper',
             'before' => null,
             'after' => null,
         )

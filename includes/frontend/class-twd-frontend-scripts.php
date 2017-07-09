@@ -58,9 +58,9 @@ class TWD_Admin_Assets
     public static function get_styles()
     {
         return apply_filters('teg_wp_dialog_enqueue_styles', array(
-            'remodal' => array(
-                'src' => self::get_asset_url('assets/css/remodal.css'),
-                'deps' => array('remodal-default-theme'),
+            'teg-wp-dialog-frontend-style' => array(
+                'src' => self::get_asset_url('assets/css/teg-wp-dialog-frontend.css'),
+                'deps' => array('remodal', 'remodal-default-theme'),
                 'version' => TWD_VERSION,
                 'media' => '',
                 'has_rtl' => true,
@@ -203,6 +203,12 @@ class TWD_Admin_Assets
             'remodal' => array(
                 'src' => self::get_asset_url('assets/css/remodal.css'),
                 'deps' => array('remodal-default-theme'),
+                'version' => TWD_VERSION,
+                'has_rtl' => false,
+            ),
+            'teg-wp-dialog-frontend-style' => array(
+                'src' => self::get_asset_url('assets/css/teg-wp-dialog-frontend.css'),
+                'deps' => array('remodal', 'remodal-default-theme'),
                 'version' => TWD_VERSION,
                 'has_rtl' => false,
             ),
