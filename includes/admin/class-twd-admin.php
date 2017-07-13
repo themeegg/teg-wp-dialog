@@ -34,6 +34,8 @@ class TWD_Admin
     public function includes()
     {
 
+        include_once(dirname(__FILE__) . '/twd-admin-functions.php');
+
         include_once(dirname(__FILE__) . '/class-twd-admin-menus.php');
 
         include_once(dirname(__FILE__) . '/class-twd-admin-assets.php');

@@ -17,13 +17,13 @@ if (!defined('ABSPATH')) {
  *
  * @return array
  */
-function teg_ta_get_screen_ids()
+function twd_get_screen_ids()
 {
 
-    $teg_ta_screen_id = sanitize_title(__('TEG WP Dialog', 'teg-twitter-api'));
+    $twd_screen_id = sanitize_title(__('TEG WP Dialog', 'teg-wp-dialog'));
     $screen_ids = array(
-        'toplevel_page_' . $teg_ta_screen_id,
-        //$teg_ta_screen_id . '_page_teg_ta-reports',
+        'toplevel_page_' . $twd_screen_id,
+        //$twd_screen_id . '_page_teg_ta-reports',
     );
 
 
@@ -36,7 +36,7 @@ function teg_ta_get_screen_ids()
  *
  * @return array
  */
-function teg_ta_get_current_tab()
+function twd_get_current_tab()
 {
 
     $current_tab = isset($_GET['tab']) ? $_GET['tab'] : '';
@@ -49,7 +49,7 @@ function teg_ta_get_current_tab()
  *
  * @return array
  */
-function teg_ta_get_current_section()
+function twd_get_current_section()
 {
 
     $current_tab = isset($_GET['section']) ? $_GET['section'] : '';

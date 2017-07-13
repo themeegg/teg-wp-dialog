@@ -48,13 +48,15 @@ if (!class_exists('TWD_Settings_General', false)) :
                 array('title' => __('General options', 'teg-wp-dialog'), 'type' => 'title', 'desc' => '', 'id' => 'general_options'),
 
                 array(
-                    'title' => __('Post on twitter', 'teg-wp-dialog'),
+                    'title' => __('Dialog Width', 'teg-wp-dialog'),
                     'desc' => __('Post on twitter', 'teg-wp-dialog'),
                     'id' => 'teg_wp_dialog_post_on_twitter',
                     'default' => 'yes',
-                    'type' => 'checkbox',
-                    'checkboxgroup' => 'start',
-                    'show_if_checked' => 'option',
+                    'type' => 'text',
+                    'desc_tip' => true,
+
+
+
                 ),
 
 
@@ -67,20 +69,6 @@ if (!class_exists('TWD_Settings_General', false)) :
 
         }
 
-        /**
-         * Output a color picker input box.
-         *
-         * @param mixed $name
-         * @param string $id
-         * @param mixed $value
-         * @param string $desc (default: '')
-         */
-        public function color_picker($name, $id, $value, $desc = '')
-        {
-            echo '<div class="color_box">' . teg_ta_help_tip($desc) . '
-			<input name="' . esc_attr($id) . '" id="' . esc_attr($id) . '" type="text" value="' . esc_attr($value) . '" class="colorpick" /> <div id="colorPickerDiv_' . esc_attr($id) . '" class="colorpickdiv"></div>
-		</div>';
-        }
 
         /**
          * Save settings.
@@ -88,7 +76,7 @@ if (!class_exists('TWD_Settings_General', false)) :
         public function save()
         {
 
-             $settings = $this->get_settings();
+            $settings = $this->get_settings();
 
 
             TWD_Admin_Settings::save_fields($settings);

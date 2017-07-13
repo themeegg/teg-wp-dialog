@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
 }
 
 ?>
-<div class="wrap">
+<div class="wrap teg-wp-dialog">
     <form method="<?php echo esc_attr(apply_filters('teg_wp_dialog_settings_form_method_tab_' . $current_tab, 'post')); ?>"
           id="mainform" action="" enctype="multipart/form-data">
         <nav class="nav-tab-wrapper woo-nav-tab-wrapper">

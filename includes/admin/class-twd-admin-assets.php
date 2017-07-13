@@ -2,7 +2,7 @@
 /**
  * Handle frontend scripts
  *
- * @class       TEG_TWD_Admin_Assets
+ * @class       TWD_Admin_Assets
  * @version     1.0.0
  * @package     TEG_WP_Dialog/Classes/
  * @category    Class
@@ -14,9 +14,9 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * TEG_TWD_Admin_Assets Class.
+ * TWD_Admin_Assets Class.
  */
-class TEG_TWD_Admin_Assets
+class TWD_Admin_Assets
 {
 
     /**
@@ -55,11 +55,11 @@ class TEG_TWD_Admin_Assets
      */
     public static function get_styles()
     {
-        return apply_filters('teg_twitter_api_enqueue_admin_styles', array(
+        return apply_filters('teg_wp_dialog_enqueue_admin_styles', array(
             'admin-teg-wp-dialog-style' => array(
                 'src' => self::get_asset_url('assets/css/admin-teg-wp-dialog.css'),
                 'deps' => array('select2'),
-                'version' => TEG_TWD_VERSION,
+                'version' => TWD_VERSION,
                 'media' => 'all',
                 'has_rtl' => true,
             ),
@@ -76,7 +76,7 @@ class TEG_TWD_Admin_Assets
      */
     private static function get_asset_url($path)
     {
-        return str_replace(array('http:', 'https:'), '', plugins_url($path, TEG_TWD_PLUGIN_FILE));
+        return str_replace(array('http:', 'https:'), '', plugins_url($path, TWD_PLUGIN_FILE));
     }
 
     /**
@@ -90,7 +90,7 @@ class TEG_TWD_Admin_Assets
      * @param  string $version
      * @param  boolean $in_footer
      */
-    private static function register_script($handle, $path, $deps = array('jquery'), $version = TEG_TWD_VERSION, $in_footer = true)
+    private static function register_script($handle, $path, $deps = array('jquery'), $version = TWD_VERSION, $in_footer = true)
     {
         self::$scripts[] = $handle;
         wp_register_script($handle, $path, $deps, $version, $in_footer);
@@ -107,7 +107,7 @@ class TEG_TWD_Admin_Assets
      * @param  string $version
      * @param  boolean $in_footer
      */
-    private static function enqueue_script($handle, $path = '', $deps = array('jquery'), $version = TEG_TWD_VERSION, $in_footer = true)
+    private static function enqueue_script($handle, $path = '', $deps = array('jquery'), $version = TWD_VERSION, $in_footer = true)
     {
         if (!in_array($handle, self::$scripts) && $path) {
             self::register_script($handle, $path, $deps, $version, $in_footer);
@@ -127,7 +127,7 @@ class TEG_TWD_Admin_Assets
      * @param  string $media
      * @param  boolean $has_rtl
      */
-    private static function register_style($handle, $path, $deps = array(), $version = TEG_TWD_VERSION, $media = 'all', $has_rtl = false)
+    private static function register_style($handle, $path, $deps = array(), $version = TWD_VERSION, $media = 'all', $has_rtl = false)
     {
         self::$styles[] = $handle;
         wp_register_style($handle, $path, $deps, $version, $media);
@@ -149,7 +149,7 @@ class TEG_TWD_Admin_Assets
      * @param  string $media
      * @param  boolean $has_rtl
      */
-    private static function enqueue_style($handle, $path = '', $deps = array(), $version = TEG_TWD_VERSION, $media = 'all', $has_rtl = false)
+    private static function enqueue_style($handle, $path = '', $deps = array(), $version = TWD_VERSION, $media = 'all', $has_rtl = false)
     {
         if (!in_array($handle, self::$styles) && $path) {
             self::register_style($handle, $path, $deps, $version, $media, $has_rtl);
@@ -162,17 +162,22 @@ class TEG_TWD_Admin_Assets
      */
     private static function register_scripts()
     {
+
         $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 
         $register_scripts = array(
             'select2' => array(
                 'src' => self::get_asset_url('assets/js/select2/select2' . $suffix . '.js'),
                 'deps' => array('jquery'),
-                'version' => TEG_TWD_VERSION
+                'version' => TWD_VERSION
+            ), 'jquery-tiptip' => array(
+                'src' => self::get_asset_url('assets/js/jquery-tiptip/jquery.tipTip' . $suffix . '.js'),
+                'deps' => array('jquery'),
+                'version' => TWD_VERSION
             ), 'admin-teg-wp-dialog-script' => array(
                 'src' => self::get_asset_url('assets/js/admin/admin-teg-wp-dialog' . $suffix . '.js'),
-                'deps' => array('select2'),
-                'version' => TEG_TWD_VERSION
+                'deps' => array('select2', 'jquery-tiptip'),
+                'version' => TWD_VERSION
             )
 
         );
@@ -191,12 +196,12 @@ class TEG_TWD_Admin_Assets
             'select2' => array(
                 'src' => self::get_asset_url('assets/css/select2.css'),
                 'deps' => array(),
-                'version' => TEG_TWD_VERSION,
+                'version' => TWD_VERSION,
                 'has_rtl' => false,
             ), 'admin-teg-wp-dialog-style' => array(
                 'src' => self::get_asset_url('assets/css/admin-teg-wp-dialog.css'),
                 'deps' => array('select2'),
-                'version' => TEG_TWD_VERSION,
+                'version' => TWD_VERSION,
                 'has_rtl' => false,
             ),
 
@@ -217,7 +222,7 @@ class TEG_TWD_Admin_Assets
 
         $screen_id = $screen ? $screen->id : '';
 
-        if (!did_action('before_teg_twitter_api_init')) {
+        if (!did_action('before_teg_wp_dialog_init')) {
             return;
         }
 
@@ -225,13 +230,15 @@ class TEG_TWD_Admin_Assets
 
         self::register_styles();
 
-        if (in_array($screen_id, teg_ta_get_screen_ids())) {
+        if (in_array($screen_id, twd_get_screen_ids())) {
 
-            if (in_array(teg_ta_get_current_section(), array('', 'trends')) && teg_ta_get_current_tab() == 'layouts') {
 
-                self::enqueue_script('admin-teg-wp-dialog-script');
+            //if (in_array(twd_get_current_section(), array('', 'trends')) && twd_get_current_tab() == 'layouts') {
 
-            }
+
+            self::enqueue_script('admin-teg-wp-dialog-script');
+
+            //}
 
 
         }
@@ -244,13 +251,10 @@ class TEG_TWD_Admin_Assets
                     $args['has_rtl'] = false;
                 }
 
-                if (in_array($screen_id, teg_ta_get_screen_ids())) {
+                if (in_array($screen_id, twd_get_screen_ids())) {
 
-                    if (in_array(teg_ta_get_current_section(), array('', 'trends')) && teg_ta_get_current_tab() == 'layouts') {
 
-                        self::enqueue_style($handle, $args['src'], $args['deps'], $args['version'], $args['media'], $args['has_rtl']);
-
-                    }
+                    self::enqueue_style($handle, $args['src'], $args['deps'], $args['version'], $args['media'], $args['has_rtl']);
 
 
                 }
@@ -306,4 +310,4 @@ class TEG_TWD_Admin_Assets
     }
 }
 
-TEG_TWD_Admin_Assets::init();
+TWD_Admin_Assets::init();

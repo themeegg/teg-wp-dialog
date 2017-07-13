@@ -36,7 +36,7 @@ function twd_help_tip($tip, $allow_html = false)
         $tip = esc_attr($tip);
     }
 
-    return '<span class="teg-twitter-api-help-tip" data-tip="' . $tip . '"></span>';
+    return '<span class="teg-wp-dialog-help-tip" data-tip="' . $tip . '"></span>';
 }
 
 /**
@@ -52,7 +52,7 @@ function twd_get_template_part($slug, $name = '')
 {
     $template = '';
 
-    // Look in yourtheme/slug-name.php and yourtheme/teg-twitter-api/slug-name.php
+    // Look in yourtheme/slug-name.php and yourtheme/teg-wp-dialog/slug-name.php
     if ($name && !TWD_TEMPLATE_DEBUG_MODE) {
         $template = locate_template(array("{$slug}-{$name}.php", TWD()->template_path() . "{$slug}-{$name}.php"));
     }

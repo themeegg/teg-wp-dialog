@@ -43,7 +43,7 @@ if (!class_exists('TWD_Admin_Menus', false)) :
                 __('Dialog Settings', 'teg-wp-dialog'),
                 'manage_options',
                 'teg-wp-dialog',
-                array($this, 'settings_page'), 'dashicons-twitter', '55.5');
+                array($this, 'settings_page'), 'dashicons-admin-page', '55.5');
 
 
         }

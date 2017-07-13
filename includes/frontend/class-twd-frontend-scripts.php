@@ -280,7 +280,7 @@ class TWD_Admin_Assets
         global $wp;
 
         switch ($handle) {
-            case 'user-registration' :
+            case 'teg-wp-dialog' :
                 return array(
                     'ajax_url' => admin_url('admin-ajax.php'),
                 );

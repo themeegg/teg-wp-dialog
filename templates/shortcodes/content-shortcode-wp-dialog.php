@@ -2,7 +2,7 @@
 /**
  * The template for displaying wp dialog
  *
- * This template can be overridden by copying it to yourtheme/teg-twitter-api/content-widget-twitter-trends.php
+ * This template can be overridden by copying it to yourtheme/teg-wp-dialog/content-widget-twitter-trends.php
  *
  * HOWEVER, on occasion TEG Twitter API will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to

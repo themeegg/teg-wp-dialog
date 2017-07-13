@@ -95,19 +95,19 @@ if (!class_exists('TWD_Settings_Advance', false)) :
                         'title' => __('Trends Layout', 'teg-wp-dialog'),
                         'type' => 'title',
                         'desc' => '',
-                        'id' => 'teg_ta_twitter_trend_shortcode_layout_setting_options',
+                        'id' => 'twd_twitter_trend_shortcode_layout_setting_options',
                     ),
                     array(
                         'title' => __('Templates', 'teg-wp-dialog'),
                         'desc' => __('Layout tempaltes .', 'teg-wp-dialog'),
-                        'id' => 'teg_ta_twitter_trend_shortcode_layout',
+                        'id' => 'twd_twitter_trend_shortcode_layout',
                         'default' => 'teg-trend-tmpl1',
                         'type' => 'select',
                         'class' => 'teg-select',
                         'css' => 'min-width: 350px;',
                         'desc_tip' => true,
                         'autoload' => false,
-                        'options' => teg_ta_twitter_trend_templates(),
+                        'options' => twd_twitter_trend_templates(),
                     ), array(
                         'type' => 'sectionend',
                         'id' => 'teg_twitter_layout_settings',
@@ -121,19 +121,19 @@ if (!class_exists('TWD_Settings_Advance', false)) :
                     array(
                         'title' => __('Twitter Timeline Layout', 'teg-wp-dialog'),
                         'type' => 'title',
-                        'id' => 'teg_ta_twitter_feed_shortcode_layout_setting_options',
+                        'id' => 'twd_twitter_feed_shortcode_layout_setting_options',
                     ),
 
                     array(
                         'title' => __('Templates ', 'teg-wp-dialog'),
                         'desc' => __('Twiter feed layout s', 'teg-wp-dialog'),
-                        'id' => 'teg_ta_twitter_feed_shortcode_layout',
+                        'id' => 'twd_twitter_feed_shortcode_layout',
                         'default' => 'teg-feed-tmpl1',
                         'type' => 'select',
                         'class' => 'teg-select',
                         'css' => 'min-width: 350px;',
                         'desc_tip' => true,
-                        'options' => teg_ta_twitter_feed_templates(),
+                        'options' => twd_twitter_feed_templates(),
                     ),
 
                     array(

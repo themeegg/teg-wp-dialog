@@ -47,7 +47,7 @@ class TWD_Admin_Settings {
 		if ( empty( self::$settings ) ) {
 			$settings = array();
 
-			teg_ta_include( dirname( __FILE__ ) . '/settings/class-twd-settings-page.php' );
+			twd_include( dirname( __FILE__ ) . '/settings/class-twd-settings-page.php' );
 
 			$settings[]= include_once( dirname( __FILE__ ) . '/settings/class-twd-settings-general.php' );
 
@@ -65,8 +65,8 @@ class TWD_Admin_Settings {
 	public static function save() {
 		global $current_tab;
 
-		if ( empty( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'teg-twitter-api-settings' ) ) {
-			die( __( 'Action failed. Please refresh the page and retry.', 'teg-twitter-api' ) );
+		if ( empty( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'teg-wp-dialog-settings' ) ) {
+			die( __( 'Action failed. Please refresh the page and retry.', 'teg-wp-dialog' ) );
 		}
 
 		// Trigger actions
@@ -74,7 +74,7 @@ class TWD_Admin_Settings {
 		do_action( 'teg_wp_dialog_update_options_' . $current_tab );
 		do_action( 'teg_wp_dialog_update_options' );
 
-		self::add_message( __( 'Your settings have been saved.', 'teg-twitter-api' ) );
+		self::add_message( __( 'Your settings have been saved.', 'teg-wp-dialog' ) );
 		self::check_download_folder_protection();
 
 		// Clear any unwanted data and flush rules
@@ -133,7 +133,7 @@ class TWD_Admin_Settings {
 		wp_enqueue_script( 'teg_wp_dialog_settings', TWD()->plugin_url() . '/assets/js/admin/settings' . $suffix . '.js', array( 'jquery', 'jquery-ui-datepicker', 'jquery-ui-sortable', 'iris', 'select2' ), TWD()->version, true );
 
 		wp_localize_script( 'teg_wp_dialog_settings', 'teg_wp_dialog_settings_params', array(
-			'i18n_nav_warning' => __( 'The changes you made will be lost if you navigate away from this page.', 'teg-twitter-api' ),
+			'i18n_nav_warning' => __( 'The changes you made will be lost if you navigate away from this page.', 'teg-wp-dialog' ),
 		) );
 
 		// Include settings pages
@@ -149,12 +149,12 @@ class TWD_Admin_Settings {
 		}
 
 		// Add any posted messages
-		if ( ! empty( $_GET['teg_ta_error'] ) ) {
-			self::add_error( stripslashes( $_GET['teg_ta_error'] ) );
+		if ( ! empty( $_GET['twd_error'] ) ) {
+			self::add_error( stripslashes( $_GET['twd_error'] ) );
 		}
 
-		if ( ! empty( $_GET['teg_ta_message'] ) ) {
-			self::add_message( stripslashes( $_GET['teg_ta_message'] ) );
+		if ( ! empty( $_GET['twd_message'] ) ) {
+			self::add_message( stripslashes( $_GET['twd_message'] ) );
 		}
 
 		// Get tabs for the settings page
@@ -511,7 +511,7 @@ class TWD_Admin_Settings {
 				case 'image_width' :
 
 					$image_size       = str_replace( '_image_size', '', $value['id'] );
-					$size             = teg_ta_get_image_size( $image_size );
+					$size             = twd_get_image_size( $image_size );
 					$width            = isset( $size['width'] ) ? $size['width'] : $value['default']['width'];
 					$height           = isset( $size['height'] ) ? $size['height'] : $value['default']['height'];
 					$crop             = isset( $size['crop'] ) ? $size['crop'] : $value['default']['crop'];
@@ -520,7 +520,7 @@ class TWD_Admin_Settings {
 
 					if ( has_filter( 'teg_wp_dialog_get_image_size_' . $image_size ) ) {
 						$disabled_attr = 'disabled="disabled"';
-						$disabled_message = "<p><small>" . __( 'The settings of this image size have been disabled because its values are being overwritten by a filter.', 'teg-twitter-api' ) . "</small></p>";
+						$disabled_message = "<p><small>" . __( 'The settings of this image size have been disabled because its values are being overwritten by a filter.', 'teg-wp-dialog' ) . "</small></p>";
 					}
 
 					?><tr valign="top">
@@ -529,7 +529,7 @@ class TWD_Admin_Settings {
 
 							<input name="<?php echo esc_attr( $value['id'] ); ?>[width]" <?php echo $disabled_attr; ?> id="<?php echo esc_attr( $value['id'] ); ?>-width" type="text" size="3" value="<?php echo $width; ?>" /> &times; <input name="<?php echo esc_attr( $value['id'] ); ?>[height]" <?php echo $disabled_attr; ?> id="<?php echo esc_attr( $value['id'] ); ?>-height" type="text" size="3" value="<?php echo $height; ?>" />px
 
-							<label><input name="<?php echo esc_attr( $value['id'] ); ?>[crop]" <?php echo $disabled_attr; ?> id="<?php echo esc_attr( $value['id'] ); ?>-crop" type="checkbox" value="1" <?php checked( 1, $crop ); ?> /> <?php _e( 'Hard crop?', 'teg-twitter-api' ); ?></label>
+							<label><input name="<?php echo esc_attr( $value['id'] ); ?>[crop]" <?php echo $disabled_attr; ?> id="<?php echo esc_attr( $value['id'] ); ?>-crop" type="checkbox" value="1" <?php checked( 1, $crop ); ?> /> <?php _e( 'Hard crop?', 'teg-wp-dialog' ); ?></label>
 
 							</td>
 					</tr><?php
@@ -556,7 +556,7 @@ class TWD_Admin_Settings {
 					?><tr valign="top" class="single_select_page">
 						<th scope="row" class="titledesc"><?php echo esc_html( $value['title'] ) ?> <?php echo $tooltip_html; ?></th>
 						<td class="forminp">
-							<?php echo str_replace( ' id=', " data-placeholder='" . esc_attr__( 'Select a page&hellip;', 'teg-twitter-api' ) . "' style='" . $value['css'] . "' class='" . $value['class'] . "' id=", wp_dropdown_pages( $args ) ); ?> <?php echo $description; ?>
+							<?php echo str_replace( ' id=', " data-placeholder='" . esc_attr__( 'Select a page&hellip;', 'teg-wp-dialog' ) . "' style='" . $value['css'] . "' class='" . $value['class'] . "' id=", wp_dropdown_pages( $args ) ); ?> <?php echo $description; ?>
 						</td>
 					</tr><?php
 					break;
@@ -578,7 +578,7 @@ class TWD_Admin_Settings {
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
 							<?php echo $tooltip_html; ?>
 						</th>
-						<td class="forminp"><select name="<?php echo esc_attr( $value['id'] ); ?>" style="<?php echo esc_attr( $value['css'] ); ?>" data-placeholder="<?php esc_attr_e( 'Choose a country&hellip;', 'teg-twitter-api' ); ?>" aria-label="<?php esc_attr_e( 'Country', 'teg-twitter-api' ) ?>" class="wc-enhanced-select">
+						<td class="forminp"><select name="<?php echo esc_attr( $value['id'] ); ?>" style="<?php echo esc_attr( $value['css'] ); ?>" data-placeholder="<?php esc_attr_e( 'Choose a country&hellip;', 'teg-wp-dialog' ); ?>" aria-label="<?php esc_attr_e( 'Country', 'teg-wp-dialog' ) ?>" class="wc-enhanced-select">
 							<?php TWD()->countries->country_dropdown_options( $country, $state ); ?>
 						</select> <?php echo $description; ?>
 						</td>
@@ -603,7 +603,7 @@ class TWD_Admin_Settings {
 							<?php echo $tooltip_html; ?>
 						</th>
 						<td class="forminp">
-							<select multiple="multiple" name="<?php echo esc_attr( $value['id'] ); ?>[]" style="width:350px" data-placeholder="<?php esc_attr_e( 'Choose countries&hellip;', 'teg-twitter-api' ); ?>" aria-label="<?php esc_attr_e( 'Country', 'teg-twitter-api' ) ?>" class="wc-enhanced-select">
+							<select multiple="multiple" name="<?php echo esc_attr( $value['id'] ); ?>[]" style="width:350px" data-placeholder="<?php esc_attr_e( 'Choose countries&hellip;', 'teg-wp-dialog' ); ?>" aria-label="<?php esc_attr_e( 'Country', 'teg-wp-dialog' ) ?>" class="wc-enhanced-select">
 								<?php
 									if ( ! empty( $countries ) ) {
 										foreach ( $countries as $key => $val ) {
@@ -611,7 +611,7 @@ class TWD_Admin_Settings {
 										}
 									}
 								?>
-							</select> <?php echo ( $description ) ? $description : ''; ?> <br /><a class="select_all button" href="#"><?php _e( 'Select all', 'teg-twitter-api' ); ?></a> <a class="select_none button" href="#"><?php _e( 'Select none', 'teg-twitter-api' ); ?></a>
+							</select> <?php echo ( $description ) ? $description : ''; ?> <br /><a class="select_all button" href="#"><?php _e( 'Select all', 'teg-wp-dialog' ); ?></a> <a class="select_none button" href="#"><?php _e( 'Select none', 'teg-wp-dialog' ); ?></a>
 						</td>
 					</tr><?php
 					break;
@@ -676,7 +676,7 @@ class TWD_Admin_Settings {
 		if ( $tooltip_html && in_array( $value['type'], array( 'checkbox' ) ) ) {
 			$tooltip_html = '<p class="description">' . $tooltip_html . '</p>';
 		} elseif ( $tooltip_html ) {
-			$tooltip_html = teg_ta_help_tip( $tooltip_html );
+			$tooltip_html = twd_help_tip( $tooltip_html );
 		}
 
 		return array(
@@ -734,13 +734,13 @@ class TWD_Admin_Settings {
 					break;
 				case 'multiselect' :
 				case 'multi_select_countries' :
-					$value = array_filter( array_map( 'teg_ta_clean', (array) $raw_value ) );
+					$value = array_filter( array_map( 'twd_clean', (array) $raw_value ) );
 					break;
 				case 'image_width' :
 					$value = array();
 					if ( isset( $raw_value['width'] ) ) {
-						$value['width']  = teg_ta_clean( $raw_value['width'] );
-						$value['height'] = teg_ta_clean( $raw_value['height'] );
+						$value['width']  = twd_clean( $raw_value['width'] );
+						$value['height'] = twd_clean( $raw_value['height'] );
 						$value['crop']   = isset( $raw_value['crop'] ) ? 1 : 0;
 					} else {
 						$value['width']  = $option['default']['width'];
@@ -758,7 +758,7 @@ class TWD_Admin_Settings {
 					$value   = in_array( $raw_value, $allowed_values ) ? $raw_value : $default;
 					break;
 				default :
-					$value = teg_ta_clean( $raw_value );
+					$value = twd_clean( $raw_value );
 					break;
 			}
 
@@ -767,7 +767,7 @@ class TWD_Admin_Settings {
 			 * @deprecated 2.4.0 - doesn't allow manipulation of values!
 			 */
 			if ( has_action( 'teg_wp_dialog_update_option_' . sanitize_title( $option['type'] ) ) ) {
-				teg_ta_deprecated_function( 'The teg_wp_dialog_update_option_X action', '2.4.0', 'teg_wp_dialog_admin_settings_sanitize_option filter' );
+				twd_deprecated_function( 'The teg_wp_dialog_update_option_X action', '2.4.0', 'teg_wp_dialog_admin_settings_sanitize_option filter' );
 				do_action( 'teg_wp_dialog_update_option_' . sanitize_title( $option['type'] ), $option );
 				continue;
 			}
