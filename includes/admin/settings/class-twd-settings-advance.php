@@ -46,9 +46,9 @@ if (!class_exists('TWD_Settings_Advance', false)) :
         {
 
             $sections = array(
-                '' => __('Twitter Feeds', 'teg-wp-dialog'),
+                '' => __('Template Setting', 'teg-wp-dialog'),
 
-                'trends' => __('Twitter Trends', 'teg-wp-dialog'),
+                'other_settings' => __('Other Settings', 'teg-wp-dialog'),
 
             );
 
@@ -87,15 +87,15 @@ if (!class_exists('TWD_Settings_Advance', false)) :
          */
         public function get_settings($current_section = '')
         {
-            if ('trends' == $current_section) {
+            if ('other_settings' == $current_section) {
 
                 $settings = apply_filters('teg_twitter_layout_settings', array(
 
                     array(
-                        'title' => __('Trends Layout', 'teg-wp-dialog'),
+                        'title' => __('Other Settings', 'teg-wp-dialog'),
                         'type' => 'title',
                         'desc' => '',
-                        'id' => 'twd_twitter_trend_shortcode_layout_setting_options',
+                        'id' => 'twd_advance_other_settings'
                     ),
                     array(
                         'title' => __('Templates', 'teg-wp-dialog'),
@@ -107,7 +107,7 @@ if (!class_exists('TWD_Settings_Advance', false)) :
                         'css' => 'min-width: 350px;',
                         'desc_tip' => true,
                         'autoload' => false,
-                        'options' => twd_twitter_trend_templates(),
+                        'options' => twd_templates(),
                     ), array(
                         'type' => 'sectionend',
                         'id' => 'teg_twitter_layout_settings',
@@ -119,21 +119,20 @@ if (!class_exists('TWD_Settings_Advance', false)) :
             } else {
                 $settings = apply_filters('teg_wp_dialog_general_settings', array(
                     array(
-                        'title' => __('Twitter Timeline Layout', 'teg-wp-dialog'),
+                        'title' => __('Dialog Layouts', 'teg-wp-dialog'),
                         'type' => 'title',
-                        'id' => 'twd_twitter_feed_shortcode_layout_setting_options',
-                    ),
+                        'id' => 'twd_advance_templates_settings'),
 
                     array(
                         'title' => __('Templates ', 'teg-wp-dialog'),
-                        'desc' => __('Twiter feed layout s', 'teg-wp-dialog'),
-                        'id' => 'twd_twitter_feed_shortcode_layout',
-                        'default' => 'teg-feed-tmpl1',
+                        'desc' => __('Templates list', 'teg-wp-dialog'),
+                        'id' => 'twd_layout_list',
+                        'default' => '',
                         'type' => 'select',
                         'class' => 'teg-select',
-                        'css' => 'min-width: 350px;',
+                        'css' => 'min-width: 200px;',
                         'desc_tip' => true,
-                        'options' => twd_twitter_feed_templates(),
+                        'options' => twd_templates(),
                     ),
 
                     array(

@@ -57,6 +57,19 @@ function twd_get_current_section()
     return apply_filters('teg_wp_dialog_current_section', $current_tab);
 }
 
+function twd_templates()
+{
+
+
+    return array(
+
+
+        'default' => __('Default', 'teg-wp-dialog'),
+        'colorbox' => __('Colorbox', 'teg-wp-dialog')
+
+
+    );
+}
 
 
 
