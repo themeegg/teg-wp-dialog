@@ -25,7 +25,7 @@ class TWD_Ajax
      * Hooks in ajax handlers
      */
     public static function init()
-    {
+    {return;
 
         self::add_ajax_events();
     }

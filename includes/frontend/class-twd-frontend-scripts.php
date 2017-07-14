@@ -2,7 +2,7 @@
 /**
  * TEGWPFrontend fronted scripts
  *
- * @class    TWD_Admin_Assets
+ * @class    FWD_Frontend_Scripts
  * @version  1.0.0
  * @package  TEGWPFrontend/Admin
  * @category Admin
@@ -14,9 +14,9 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * TWD_Admin_Assets Class
+ * FWD_Frontend_Scripts Class
  */
-class TWD_Admin_Assets
+class FWD_Frontend_Scripts
 {
 
     /**
@@ -303,4 +303,4 @@ class TWD_Admin_Assets
     }
 }
 
-TWD_Admin_Assets::init();
+FWD_Frontend_Scripts::init();
