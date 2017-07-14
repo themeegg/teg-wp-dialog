@@ -1,30 +1,63 @@
 === Plugin Name ===
-Contributors: themeegg
+Contributors: ThemeEgg
 Donate link: http://themeegg.com
-Tags: Wordpress frontend dialog, popup dialog, popup page, homepage popup,jquery popup wordpress, wordpress popup plugin
+Tags: Frontend dialog, popup,shortcode popup, dialog plugin, wordpress dialog, popup plugin, popup dialog, frontend notice
 Requires at least: 3.0.1
-Tested up to: 4.7
-Stable tag: 4.8
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tested up to: 4.8.0
+Stable tag: 1.0.0
+License: GPLv3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Simple frontend dialog wordpress plugin.
+Frontend popup plugin via shortcode.
 
 == Description ==
 
-This is simple dialog plugin to show some notices and adv.
+This plugin help you to show dialog in any frontend pages via shortcode.
 
-We can add dialog on page, post or any widgets load, via shortcode.
+Some demo shortcode of this plugin
 
+*   [teg_wp_dialog page_id="5"]
+*   [teg_wp_dialog post_id="6"]
+
+You can change shortcode attribute as per requirement, please visit our official page <a href="http://docs.themeegg.com/docs/teg-wp-dialog/" target="_blank">http://docs.themeegg.com/docs/teg-wp-dialog/</a> for more information.
+
+Get free support at https://themeegg.com/support-forum/
+
+= Requirements =
+
+* WordPress 4.5 or later.
+
+
+= Contribute =
+
+You can contribute to the source code in our [GitHub](https://github.com/themeegg/teg-wp-dialog/) page.
 
 == Installation ==
 
-1. Upload  whole `teg-wp-dialog` folders file  to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. You can add short code [teg_wp_dialog post_id="1"] on post or pages.
-1. You can change post_id to page_id on your argument of shortcode.
+1. Download the plugin and extract the files
+2. Upload "teg-wp-dialog" to your wp-
+content/plugins/directory
+3. Activate the plugin through the 'Plugins' menu in WordPress
+4. Put shortcode to anywhere.
+5. Also you can change attribute of shortcode as you needed.
+
+== Screenshots ==
+
+1. Twitter username
+2. Twitter credentials
+3. Widgets
+4. Frontend view
+
 
 == Frequently Asked Questions ==
-Do you have questions or issues with TEG WP Dialog Plugin?
-1. Soon we'll coming with full documentation.
 
+= How many argument accepts by this shortcode plugin? =
+
+Please visit our official frontend dialog page(http://doc.themeegg.com/plugins/teg-wp-dialog) for more details. You can find there more details about this plugin.
+
+== Changelog ==
+= 1.0 =
+* Initial Release
+
+== Features ==
+1. Frontend dialog on any pages or post via shortcode

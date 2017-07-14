@@ -1,10 +1,10 @@
 <?php
 /**
- * TEG Twitter API Product Settings
+ * TEG WP Dialog Settings
  *
  * @author   ThemeEgg
  * @category Admin
- * @package  TEG_Twitter_Api/Admin
+ * @package  TEG_WP_Dialog/Admin
  * @version  1.0.0
  */
 
@@ -48,7 +48,7 @@ if (!class_exists('TWD_Settings_Advance', false)) :
             $sections = array(
                 '' => __('Template Setting', 'teg-wp-dialog'),
 
-               // 'other_settings' => __('Other Settings', 'teg-wp-dialog'),
+                // 'other_settings' => __('Other Settings', 'teg-wp-dialog'),
 
             );
 
@@ -89,28 +89,16 @@ if (!class_exists('TWD_Settings_Advance', false)) :
         {
             if ('other_settings' == $current_section) {
 
-                $settings = apply_filters('teg_twitter_layout_settings', array(
+                $settings = apply_filters('teg_wp_dialog_layout_settings', array(
 
                     array(
                         'title' => __('Other Settings', 'teg-wp-dialog'),
                         'type' => 'title',
                         'desc' => '',
                         'id' => 'twd_advance_other_settings'
-                    ),
-                    array(
-                        'title' => __('Templates', 'teg-wp-dialog'),
-                        'desc' => __('Layout tempaltes .', 'teg-wp-dialog'),
-                        'id' => 'twd_twitter_trend_shortcode_layout',
-                        'default' => 'teg-trend-tmpl1',
-                        'type' => 'select',
-                        'class' => 'teg-select',
-                        'css' => 'min-width: 350px;',
-                        'desc_tip' => true,
-                        'autoload' => false,
-                        'options' => twd_templates(),
                     ), array(
                         'type' => 'sectionend',
-                        'id' => 'teg_twitter_layout_settings',
+                        'id' => 'teg_wp_dialog_layout_settings',
                     ),
 
 

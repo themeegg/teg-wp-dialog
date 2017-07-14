@@ -109,7 +109,7 @@ msgid "TEG WP Dialog"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://themeegg.com.np/plugins/teg-wp-dialog"
+msgid "http://themeegg.com/plugins/teg-wp-dialog"
 msgstr ""
 
 #. Description of the plugin/theme

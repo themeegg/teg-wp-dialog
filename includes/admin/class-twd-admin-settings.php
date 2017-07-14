@@ -688,7 +688,6 @@ class TWD_Admin_Settings {
 	/**
 	 * Save admin fields.
 	 *
-	 * Loops though the teg-twitter api options array and outputs each field.
 	 *
 	 * @param array $options Options array to output
 	 * @param array $data Optional. Data to use for saving. Defaults to $_POST.

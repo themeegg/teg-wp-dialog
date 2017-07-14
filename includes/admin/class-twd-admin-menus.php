@@ -4,7 +4,7 @@
  *
  * @author   ThemeEgg
  * @category Admin
- * @package  TWD_Twitter_Api/Admin
+ * @package  TEG_WP_Dialog/Admin
  * @version  1.0.0
  */
 

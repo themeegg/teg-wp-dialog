@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
  *
  * @class       TWD_Shortcodes
  * @version     1.0.0
- * @package     TEG_Twitter_Api/Classes
+ * @package     TEG_WP_Dialog/Classes
  * @category    Class
  * @author      ThemeEgg
  */

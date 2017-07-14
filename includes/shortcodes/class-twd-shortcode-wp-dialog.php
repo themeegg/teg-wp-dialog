@@ -4,13 +4,13 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * Twitter Shortcodes
+ * TWD Shortcodes
  *
  * Used to frontend dialog
  *
- * @author        ThemeEgg
+ * @author       ThemeEgg
  * @category    Shortcodes
- * @package    TEG_WP_Dialog/Shortcodes/Twitter
+ * @package     TEG_WP_Dialog/Shortcodes/Dialog
  * @version     1.0.0
  */
 class TWD_Shortcode_WP_Dialog implements TWD_Shortcode_Interface
@@ -77,7 +77,7 @@ class TWD_Shortcode_WP_Dialog implements TWD_Shortcode_Interface
 
 
         $post_data = isset($post_data_obj[0]) ? $post_data_obj[0] : array();
-        
+
         $data = array(
 
             'post_title' => isset($post_data->post_title) ? $post_data->post_title : __('Post not available', 'teg-wp-dialog'),
