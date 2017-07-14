@@ -48,7 +48,7 @@ if (!class_exists('TWD_Settings_Advance', false)) :
             $sections = array(
                 '' => __('Template Setting', 'teg-wp-dialog'),
 
-                'other_settings' => __('Other Settings', 'teg-wp-dialog'),
+               // 'other_settings' => __('Other Settings', 'teg-wp-dialog'),
 
             );
 

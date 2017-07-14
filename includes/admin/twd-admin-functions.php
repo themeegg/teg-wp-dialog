@@ -65,7 +65,7 @@ function twd_templates()
 
 
         'default' => __('Default', 'teg-wp-dialog'),
-        'colorbox' => __('Colorbox', 'teg-wp-dialog')
+
 
 
     );
