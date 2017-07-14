@@ -280,9 +280,10 @@ class TWD_Admin_Assets
         global $wp;
 
         switch ($handle) {
-            case 'teg-wp-dialog' :
+            case 'teg-wp-dialog-frontend-script' :
                 return array(
                     'ajax_url' => admin_url('admin-ajax.php'),
+                    'dialog_width' => get_option('teg_wp_dialog_width', '700px')
                 );
                 break;
 

@@ -50,7 +50,7 @@ if (!class_exists('TWD_Settings_General', false)) :
                 array(
                     'title' => __('Dialog Width', 'teg-wp-dialog'),
                     'desc' => __('Dialog width, you can use, % or px or auto', 'teg-wp-dialog'),
-                    'id' => 'teg_wp_dialog_post_on_twitter',
+                    'id' => 'teg_wp_dialog_width',
                     'default' => 'auto',
                     'type' => 'text',
                     'desc_tip' => true,
