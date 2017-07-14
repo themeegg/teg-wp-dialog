@@ -98,7 +98,7 @@ class TWD_Install
         // Ensure needed classes are loaded
         include_once(dirname(__FILE__) . '/admin/class-twd-admin-notices.php');
 
-     
+
         // Queue upgrades wizard
         $current_ur_version = get_option('teg_wp_dialog_version', null);
         $current_db_version = get_option('teg_wp_dialog_db_version', null);
@@ -257,8 +257,8 @@ class TWD_Install
     {
         if ($plugin_file == TWD_PLUGIN_BASENAME) {
             $new_plugin_meta = array(
-                'docs' => '<a href="' . esc_url(apply_filters('teg_wp_dialog_docs_url', 'http://themeegg.com/teg-wp-dialog/')) . '" title="' . esc_attr(__('View TEG WP Dialog Documentation', 'teg-wp-dialog')) . '">' . __('Docs', 'teg-wp-dialog') . '</a>',
-                'support' => '<a href="' . esc_url(apply_filters('teg_wp_dialog_support_url', 'http://themeegg.com/teg-wp-dialog/')) . '" title="' . esc_attr(__('Visit Free Customer Support Forum', 'teg-wp-dialog')) . '">' . __('Free Support', 'teg-wp-dialog') . '</a>',
+                'docs' => '<a href="' . esc_url(apply_filters('teg_wp_dialog_docs_url', 'http://docs.themeegg.com/docs/teg-wp-dialog/')) . '" title="' . esc_attr(__('View TEG WP Dialog Documentation', 'teg-wp-dialog')) . '">' . __('Docs', 'teg-wp-dialog') . '</a>',
+                'support' => '<a href="' . esc_url(apply_filters('teg_wp_dialog_support_url', 'http://support.themeegg.com/')) . '" title="' . esc_attr(__('Visit Free Customer Support Forum', 'teg-wp-dialog')) . '">' . __('Free Support', 'teg-wp-dialog') . '</a>',
             );
 
             return array_merge($plugin_meta, $new_plugin_meta);
