@@ -51,7 +51,7 @@ content/plugins/directory
 
 = How many argument accepts by this shortcode plugin? =
 
-Please visit our official frontend dialog page(http://doc.themeegg.com/plugins/teg-wp-dialog) for more details. You can find there more details about this plugin.
+Please visit our official Wordpress dialog page(http://doc.themeegg.com/plugins/teg-wp-dialog) for more details. You can find there more details about this plugin.
 
 == Changelog ==
 = 1.0 =
