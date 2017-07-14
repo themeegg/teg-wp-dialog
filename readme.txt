@@ -43,10 +43,8 @@ content/plugins/directory
 
 == Screenshots ==
 
-1. Twitter username
-2. Twitter credentials
-3. Widgets
-4. Frontend view
+1. Wordpress dialog shortcode
+2. Wordpress dialog popup frontend view
 
 
 == Frequently Asked Questions ==
@@ -60,4 +58,4 @@ Please visit our official frontend dialog page(http://doc.themeegg.com/plugins/t
 * Initial Release
 
 == Features ==
-1. Frontend dialog on any pages or post via shortcode
+1. Show dialog on any pages or post via shortcode
