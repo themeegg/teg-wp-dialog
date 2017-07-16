@@ -8,8 +8,8 @@
  * @version  1.0.0
  */
 
-if (!defined('ABSPATH')) {
-    exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
 }
 
 /**
@@ -17,17 +17,16 @@ if (!defined('ABSPATH')) {
  *
  * @return array
  */
-function twd_get_screen_ids()
-{
+function twd_get_screen_ids() {
 
-    $twd_screen_id = sanitize_title(__('TEG WP Dialog', 'teg-wp-dialog'));
-    $screen_ids = array(
-        'toplevel_page_' . $twd_screen_id,
-        //$twd_screen_id . '_page_teg_ta-reports',
-    );
+	$twd_screen_id = sanitize_title( __( 'TEG WP Dialog', 'teg-wp-dialog' ) );
+	$screen_ids    = array(
+		'toplevel_page_' . $twd_screen_id,
+		//$twd_screen_id . '_page_teg_ta-reports',
+	);
 
 
-    return apply_filters('teg_wp_dialog_screen_ids', $screen_ids);
+	return apply_filters( 'teg_wp_dialog_screen_ids', $screen_ids );
 }
 
 
@@ -36,12 +35,11 @@ function twd_get_screen_ids()
  *
  * @return array
  */
-function twd_get_current_tab()
-{
+function twd_get_current_tab() {
 
-    $current_tab = isset($_GET['tab']) ? $_GET['tab'] : '';
+	$current_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : '';
 
-    return apply_filters('teg_wp_dialog_current_tab', $current_tab);
+	return apply_filters( 'teg_wp_dialog_current_tab', $current_tab );
 }
 
 /**
@@ -49,26 +47,11 @@ function twd_get_current_tab()
  *
  * @return array
  */
-function twd_get_current_section()
-{
+function twd_get_current_section() {
 
-    $current_tab = isset($_GET['section']) ? $_GET['section'] : '';
+	$current_tab = isset( $_GET['section'] ) ? $_GET['section'] : '';
 
-    return apply_filters('teg_wp_dialog_current_section', $current_tab);
-}
-
-function twd_templates()
-{
-
-
-    return array(
-
-
-        'default' => __('Default', 'teg-wp-dialog'),
-
-
-
-    );
+	return apply_filters( 'teg_wp_dialog_current_section', $current_tab );
 }
 
 

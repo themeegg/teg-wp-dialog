@@ -55,6 +55,8 @@ class TWD_Lang {
 
 			'show_dialog_close_button_description' => __( 'Label for dialog close button.', 'teg-wp-dialog' ),
 
+			'nifty_modal_label' => __( 'Nifty Modal Setting', 'teg-wp-dialog' ),
+
 		);
 
 

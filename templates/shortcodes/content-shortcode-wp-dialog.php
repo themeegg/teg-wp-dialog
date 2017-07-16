@@ -32,7 +32,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php echo $post_content; ?>
     </p>
     <br>
-	<?php echo $close_button_node; ?>
+	<?php
+
+	$close_button_node = '';
+	
+	if ( 'yes' === $show_close_button ) {
+
+		$close_button_node = '<button data-remodal-action="cancel" class="remodal-cancel">' . $close_button_label . '</button>';
+	}
+	echo $close_button_node;
+	?>
+
 
 </div>
 

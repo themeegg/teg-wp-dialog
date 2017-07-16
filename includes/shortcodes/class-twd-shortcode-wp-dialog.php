@@ -79,14 +79,6 @@ class TWD_Shortcode_WP_Dialog implements TWD_Shortcode_Interface {
 		$show_close_button = get_option( 'teg_wp_dialog_show_close_button', 'yes' );
 
 		$close_button_label = get_option( 'teg_wp_dialog_close_button_label', __( 'Close', 'teg-wp-dialog' ) );
-		
-		$close_button_node = '';
-
-		if ( 'yes' === $show_close_button ) {
-
-			$close_button_node = '<button data-remodal-action="cancel" class="remodal-cancel">' . $close_button_label . '</button>';
-		}
-
 
 		$data = array(
 
@@ -96,13 +88,49 @@ class TWD_Shortcode_WP_Dialog implements TWD_Shortcode_Interface {
 
 			'post_content' => isset( $post_data->post_content ) ? $post_data->post_content : __( 'Post not available, please check your shortcode once.', 'teg-wp-dialog' ),
 
-			'close_button_node' => $close_button_node,
+			'close_button_label' => $close_button_label,
+
+			'show_close_button' => $show_close_button,
 
 
 		);
 
+		$template = get_option( 'twd_layout_list', 'default' );
 
-		twd_get_template( 'shortcodes/content-shortcode-wp-dialog.php', $data );
+		$template = str_replace( '_', '-', $template );
+
+		$dialog_width = get_option( 'teg_wp_dialog_width' );
+
+
+		if ( $dialog_width == '' || $dialog_width == 'auto' ) {
+
+			$dialog_width = '630';
+
+
+		}
+		if ( 'nifty-modal' === $template ) {
+
+			$data['template_id'] = str_replace( 'modal-', '', get_option( 'teg_wp_dialog_nifty_modal_settings', 'modal-1' ) );
+			$data['nifty_style'] = '
+			.twd-nifty-modal .md-content{
+				background:' . get_option( 'teg_wp_dialog_nifty_modal_background_color_setting', '#e74c3c' ) . ';
+			}
+			.twd-nifty-modal .md-modal {
+			max-width: ' . $dialog_width . ';
+            
+            }
+			';
+		}
+
+
+		if ( 'default' === $template ) {
+
+			twd_get_template( 'shortcodes/content-shortcode-wp-dialog.php', $data );
+
+		} else {
+
+			twd_get_template( 'shortcodes/content-shortcode-wp-dialog-' . $template . '.php', $data );
+		}
 
 
 	}

@@ -53,6 +53,29 @@ class TWD_Admin_Settings {
 
 			$settings[] = include_once( dirname( __FILE__ ) . '/settings/class-twd-settings-advance.php' );
 
+
+			$layout_setting= isset($_POST['twd_layout_list']) ? $_POST['twd_layout_list'] :'';
+
+
+			$layout_setting = '' === $layout_setting ? self::get_option('twd_layout_list') : $layout_setting;
+
+
+			if('default'!==$layout_setting){
+
+			    $layout_setting= str_replace('_','-',$layout_setting);
+
+			    if(file_exists( dirname( __FILE__ ) . '/settings/class-twd-settings-'.$layout_setting.'.php' )){
+
+
+                $settings[] = include_once( dirname( __FILE__ ) . '/settings/class-twd-settings-'.$layout_setting.'.php' );
+
+
+			    }
+
+
+			}
+
+
 			self::$settings = apply_filters( 'teg_wp_dialog_get_settings_pages', $settings );
 		}
 
