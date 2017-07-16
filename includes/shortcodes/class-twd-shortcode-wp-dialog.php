@@ -108,6 +108,9 @@ class TWD_Shortcode_WP_Dialog implements TWD_Shortcode_Interface {
 
 
 		}
+		/*
+		* @since 1.0.1
+        */
 		if ( 'nifty-modal' === $template ) {
 
 			$data['template_id'] = str_replace( 'modal-', '', get_option( 'teg_wp_dialog_nifty_modal_settings', 'modal-1' ) );
