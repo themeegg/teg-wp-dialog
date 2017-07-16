@@ -88,7 +88,8 @@ class TWD_Admin_Settings {
 
 	/**
 	 * Add a message.
-	 * @param string $text
+	 *
+*@param string $text
 	 */
 	public static function add_message( $text ) {
 		self::$messages[] = $text;
@@ -96,7 +97,8 @@ class TWD_Admin_Settings {
 
 	/**
 	 * Add an error.
-	 * @param string $text
+	 *
+*@param string $text
 	 */
 	public static function add_error( $text ) {
 		self::$errors[] = $text;
@@ -650,7 +652,8 @@ class TWD_Admin_Settings {
 	 * settings types.
 	 *
 	 * @param  array $value The form field value array
-	 * @return array The description and tip as a 2 element array
+	 *
+*@return array The description and tip as a 2 element array
 	 */
 	public static function get_field_description( $value ) {
 		$description  = '';
@@ -691,9 +694,11 @@ class TWD_Admin_Settings {
 	 *
 	 * @param array $options Options array to output
 	 * @param array $data Optional. Data to use for saving. Defaults to $_POST.
-	 * @return bool
+	 *
+*@return bool
 	 */
 	public static function save_fields( $options, $data = null ) {
+
 		if ( is_null( $data ) ) {
 
 		    $data = $_POST;
@@ -722,6 +727,7 @@ class TWD_Admin_Settings {
 				$setting_name = '';
 				$raw_value    = isset( $data[ $option['id'] ] ) ? wp_unslash( $data[ $option['id'] ] ) : null;
 			}
+
 
 			// Format the value based on option type.
 			switch ( $option['type'] ) {
@@ -759,14 +765,19 @@ class TWD_Admin_Settings {
 				default :
 					$value = twd_clean( $raw_value );
 					break;
+
+
+
+
 			}
+
 
 			/**
 			 * Fire an action when a certain 'type' of field is being saved.
 			 * @deprecated 2.4.0 - doesn't allow manipulation of values!
 			 */
 			if ( has_action( 'teg_wp_dialog_update_option_' . sanitize_title( $option['type'] ) ) ) {
-				twd_deprecated_function( 'The teg_wp_dialog_update_option_X action', '2.4.0', 'teg_wp_dialog_admin_settings_sanitize_option filter' );
+				//twd_deprecated_function( 'The teg_wp_dialog_update_option_X action', '2.4.0', 'teg_wp_dialog_admin_settings_sanitize_option filter' );
 				do_action( 'teg_wp_dialog_update_option_' . sanitize_title( $option['type'] ), $option );
 				continue;
 			}

@@ -17,8 +17,8 @@
  */
 
 // Exit if accessed directly
-if (!defined('ABSPATH')) {
-    exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 
 }
 
@@ -29,11 +29,11 @@ if (!defined('ABSPATH')) {
     <button data-remodal-action="close" class="remodal-close"></button>
     <h2><?php echo $post_title; ?></h2>
     <p>
-        <?php echo $post_content; ?>
+		<?php echo $post_content; ?>
     </p>
     <br>
-    <button data-remodal-action="cancel" class="remodal-cancel"><?php echo __('Close', 'teg-wp-dialog'); ?></button>
-    <!--        <button data-remodal-action="confirm" class="remodal-confirm">OK</button>-->
+	<?php echo $close_button_node; ?>
+
 </div>
 
 
