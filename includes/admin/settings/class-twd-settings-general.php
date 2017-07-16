@@ -25,7 +25,7 @@ if ( ! class_exists( 'TWD_Settings_General', false ) ) :
 		public function __construct() {
 
 			$this->id    = 'general';
-			$this->label = __( 'General', 'teg-wp-dialog' );
+			$this->label = TWD_Lang::text( 'general_tab_label' );
 
 			add_filter( 'teg_wp_dialog_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
 			add_action( 'teg_wp_dialog_settings_' . $this->id, array( $this, 'output' ) );
@@ -43,15 +43,15 @@ if ( ! class_exists( 'TWD_Settings_General', false ) ) :
 			$settings = array(
 
 				array(
-					'title' => __( 'General options', 'teg-wp-dialog' ),
+					'title' => TWD_Lang::text( 'general_option' ),
 					'type'  => 'title',
 					'desc'  => '',
 					'id'    => 'general_options'
 				),
 
 				array(
-					'title'    => __( 'Dialog Width', 'teg-wp-dialog' ),
-					'desc'     => __( 'Dialog width, you can use, % or px or auto', 'teg-wp-dialog' ),
+					'title'    => TWD_Lang::text( 'dialog_width' ),
+					'desc'     => TWD_Lang::text( 'dialog_width_description' ),
 					'id'       => 'teg_wp_dialog_width',
 					'default'  => 'auto',
 					'type'     => 'text',
@@ -60,8 +60,8 @@ if ( ! class_exists( 'TWD_Settings_General', false ) ) :
 
 				),
 				array(
-					'title'    => __( 'Show dialog close button ? ', 'teg-wp-dialog' ),
-					'desc'     => __( 'Tick right, if you want to show close button.', 'teg-wp-dialog' ),
+					'title'    => TWD_Lang::text( 'show_dialog_close_button' ),
+					'desc'     => TWD_Lang::text( 'show_dialog_close_button_description' ),
 					'id'       => 'teg_wp_dialog_show_close_button',
 					'type'     => 'checkbox',
 					'default'  => 'yes',
@@ -71,15 +71,14 @@ if ( ! class_exists( 'TWD_Settings_General', false ) ) :
 
 				),
 				array(
-					'title'    => __( 'Close button label', 'teg-wp-dialog' ),
-					'desc'     => __( 'Label for dialog close button', 'teg-wp-dialog' ),
+					'title'    => TWD_Lang::text( 'close_button_label' ),
+					'desc'     => TWD_Lang::text( 'close_button_label_description' ),
 					'id'       => 'teg_wp_dialog_close_button_label',
 					'default'  => __( 'Close', 'teg-wp-dialog' ),
 					'type'     => 'text',
 					'autoload' => false,
 
 					'desc_tip' => true,
-
 
 
 				),
