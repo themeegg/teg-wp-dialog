@@ -57,6 +57,6 @@ Please visit our official Wordpress dialog page(http://doc.themeegg.com/plugins/
 = 1.0 =
 * Initial Release
 = 1.0.1 =
-* Multiple dialog tempalte feature added
+* Multiple dialog templates feature added
 == Features ==
 1. Show dialog on any pages or post via shortcode
