@@ -39,8 +39,8 @@ if (!class_exists('TWD_Admin_Menus', false)) :
             global $menu;
 
 
-            add_menu_page(__('Dialog Settings', 'teg-wp-dialog'),
-                __('Dialog Settings', 'teg-wp-dialog'),
+            add_submenu_page( 'edit.php?post_type=teg-wp-dialog', __('Dialog Settings', 'teg-wp-dialog'),
+                __('Settings', 'teg-wp-dialog'),
                 'manage_options',
                 'teg-wp-dialog',
                 array($this, 'settings_page'), 'dashicons-admin-page', '55.5');
