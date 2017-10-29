@@ -34,7 +34,9 @@ if ( ! defined( 'ABSPATH' ) ) {
         <div class="md-content">
             <h3><?php echo $post_title; ?></h3>
             <div>
-                <p>        <?php echo $post_content; ?>
+
+
+	            <p>       <?php echo do_shortcode($post_content); ?>
                 </p>
 
 				<?php

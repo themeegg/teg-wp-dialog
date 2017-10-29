@@ -29,13 +29,13 @@ if ( ! defined( 'ABSPATH' ) ) {
     <button data-remodal-action="close" class="remodal-close"></button>
     <h2><?php echo $post_title; ?></h2>
     <p>
-		<?php echo $post_content; ?>
+		<?php echo do_shortcode($post_content); ?>
     </p>
     <br>
 	<?php
 
 	$close_button_node = '';
-	
+
 	if ( 'yes' === $show_close_button ) {
 
 		$close_button_node = '<button data-remodal-action="cancel" class="remodal-cancel">' . $close_button_label . '</button>';

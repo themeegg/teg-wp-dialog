@@ -3,7 +3,7 @@
  * Plugin Name: Wordpress dialog
  * Plugin URI: http://themeegg.com/plugins/teg-wp-dialog
  * Description: Show dialog on home page or any other page and on posts with this shortcode. Example: [teg_wp_dialog post_id="1"] or [teg_wp_dialog page_id="4"]
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: ThemeEgg
  * Author URI: http://themeegg.com
  * Requires at least: 4.0
@@ -36,7 +36,7 @@ if (!class_exists('TEG_WP_Dialog')) :
          * Plugin version.
          * @var string
          */
-        public $version = '1.0.0';
+        public $version = '1.0.3';
 
         /**
          * Query instance.
