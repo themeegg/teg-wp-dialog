@@ -3,8 +3,8 @@ Contributors: ThemeEgg
 Donate link: http://themeegg.com
 Tags: Wordpress dialog, frontend dialog, popup,shortcode popup, dialog plugin, wordpress dialog, popup plugin, popup dialog, frontend notice
 Requires at least: 3.0.1
-Tested up to: 4.8.0
-Stable tag: 1.0.3
+Tested up to: 4.9
+Stable tag: 1.0.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -53,13 +53,21 @@ content/plugins/directory
 
 Please visit our official Wordpress dialog page(http://doc.themeegg.com/plugins/teg-wp-dialog) for more details. You can find there more details about this plugin.
 
+== Features ==
+1. Show dialog on any pages or post via shortcode
+
 == Changelog ==
-= 1.0 =
-* Initial Release
-= 1.0.1 =
-* Multiple dialog templates feature added
+
+= 1.0.4  2017/11/14 =
+* fix - Tested version compatibility  
 = 1.0.3  2017/10/29 =
 * Shortcode support for post content
 
-== Features ==
-1. Show dialog on any pages or post via shortcode
+= 1.0.1 =
+* Multiple dialog templates feature added
+
+= 1.0 =
+* Initial Release
+
+
+
